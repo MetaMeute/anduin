@@ -1,4 +1,10 @@
 Anduin::Application.routes.draw do
+  namespace :meutewiki do
+    get '/', :action => 'front_page'
+    get 'index'
+    get 'new'
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

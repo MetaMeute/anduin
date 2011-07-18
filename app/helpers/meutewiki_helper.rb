@@ -1,0 +1,2 @@
+module MeutewikiHelper
+end

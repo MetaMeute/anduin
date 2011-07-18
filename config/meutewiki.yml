@@ -1,0 +1,11 @@
+development:
+  repo: db/meutewiki.git
+  base_path: /meutewiki
+
+test:
+  repo: spec/fixtures/testwiki.git
+  base_path: /meutewiki
+
+production:
+  repo: db/meutewiki.git
+  base_path: /meutewiki
