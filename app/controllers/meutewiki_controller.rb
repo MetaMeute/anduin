@@ -8,8 +8,6 @@ class MeutewikiController < ApplicationController
     @wiki_page = @wiki.page(params['name'])
     if @wiki_page.nil? then
       redirect_to meutewiki_edit_page_path(:name => params['name'])
-    else
-      render 'show'
     end
   end
 
