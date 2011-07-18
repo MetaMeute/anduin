@@ -2,7 +2,8 @@ Anduin::Application.routes.draw do
   namespace :meutewiki do
     get '/', :action => 'front_page'
     get 'index'
-    get 'new'
+    get ':name/edit', :action => 'edit', :as => :edit_page
+    get ":name", :action => 'show', :as => :show_page
   end
 
   # The priority is based upon order of creation:
