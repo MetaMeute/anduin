@@ -14,6 +14,7 @@ gem 'uglifier'
 gem 'jquery-rails'
 
 gem 'gollum', '~> 1.3.0'
+gem 'rdiscount'
 
 group :development, :test do
   gem 'rspec-rails'
