@@ -1,2 +1,6 @@
-<h1>Meutewiki#index</h1>
-<p>Find me in app/views/meutewiki/index.html.erb</p>
+<h1>Meutewiki index</h1>
+<ul>
+<% @wiki_pages.each do |page| %>
+  <li><%= link_to page.name, meutewiki_show_page_path(page.name) %></li>
+<% end %>
+<ul>
