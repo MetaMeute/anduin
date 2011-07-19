@@ -2,7 +2,7 @@ class MeutewikiController < ApplicationController
   before_filter :load_wiki
 
   def index
-    @wiki_pages = @wiki.pages
+    @wiki_pages = @wiki.pages.nil? ? [] : @wiki.pages
   end
 
   def show
