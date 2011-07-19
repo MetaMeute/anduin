@@ -21,6 +21,11 @@ describe MeutewikiController do
         get 'index'
         response.should render_template('meutewiki/index')
       end
+
+      it "should assign all pages in the wiki" do
+        get 'index'
+        assigns(:wiki_pages).should have(2).items
+      end
     end
 
     describe "GET 'front_page'" do
