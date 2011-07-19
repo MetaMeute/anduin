@@ -23,7 +23,7 @@ class MeutewikiController < ApplicationController
   private
 
   def load_wiki
-    @wiki = Gollum::Wiki.new(MEUTEWIKI_CONFIG['repo'], MEUTEWIKI_CONFIG['base_path'])
+    @wiki = Gollum::Wiki.new(MEUTEWIKI_CONFIG['repo'], :base_path => MEUTEWIKI_CONFIG['base_path'])
   end
 
 end

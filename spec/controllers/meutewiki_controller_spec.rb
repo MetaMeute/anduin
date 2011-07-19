@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe MeutewikiController do
 
+  it "should assign a wiki with correct base path" do
+    get 'front_page'
+    assigns(:wiki).base_path.should eq("/meutewiki")
+  end
+
   context "with empty wiki" do
     before(:each) do
       controller.stub!(:find_front_page){ nil }
