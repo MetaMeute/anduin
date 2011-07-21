@@ -1,15 +1,15 @@
 @font-face {
   font-family:Vollkorn;
-  src: url("fonts/Vollkorn-Regular.eot");
-  src: local("Vollkorn"), url("fonts/Vollkorn-Regular.woff") format("woff"),
-  url("fonts/Vollkorn-Regular.ttf") format("truetype");
+  src: url("/fonts/Vollkorn-Regular.eot");
+  src: local("Vollkorn"), url("/fonts/Vollkorn-Regular.woff") format("woff"),
+  url("/fonts/Vollkorn-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family:Vollkorn;
   font-weight: bold;
-  src: url("fonts/Vollkorn-Bold.eot");
-  src: local("Vollkorn"), url("fonts/Vollkorn-Bold.woff") format("woff"),
-  url("fonts/Vollkorn-Bold.ttf") format("truetype");
+  src: url("/fonts/Vollkorn-Bold.eot");
+  src: local("Vollkorn"), url("/fonts/Vollkorn-Bold.woff") format("woff"),
+  url("/fonts/Vollkorn-Bold.ttf") format("truetype");
 }
 body {
 	font-size: 80.0%, Serif;
@@ -149,7 +149,7 @@ h1,h2,h3,h4,h5 {
 div#content-outer {
 	padding-top:.5em;
 }
-div#content {
+div#page_content {
 	margin-left:200px;
 	margin-right:200px;
 	padding-left:1em;
