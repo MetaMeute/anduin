@@ -198,7 +198,7 @@ div#footer
 	z-index:2;
 	overflow: visible;
 	color:#ffffff;
-	position:absolute; bottom:0;
+	position:fixed; bottom:0;
 	border:0px;
 	border-bottom: 3px solid black;
 }
