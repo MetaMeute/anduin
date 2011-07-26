@@ -7,6 +7,7 @@ gem 'sqlite3'
 # Asset template engines
 gem 'json'
 gem 'sass-rails', "~> 3.1.0.rc"
+gem 'haml'
 gem 'coffee-script'
 gem 'therubyracer'
 gem 'uglifier'
