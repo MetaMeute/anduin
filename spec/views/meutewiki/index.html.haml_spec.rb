@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "meutewiki/index.html.erb" do
+describe "meutewiki/index.html.haml" do
   it "should render a list of pages" do
     assign(:wiki_pages,
            [double("Gollum::Page", :name => 'TestPage1'),

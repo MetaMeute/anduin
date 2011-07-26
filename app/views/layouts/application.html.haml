@@ -1,0 +1,17 @@
+!!! 5
+%html
+  %head
+    %title
+      Anduin -
+      = yield :title
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+%body
+  #page
+    = render :partial => 'share/navigation'
+    #content-outer
+      = render :partial => 'share/sidebars'
+      = yield
+    = render :partial => 'share/footer'
