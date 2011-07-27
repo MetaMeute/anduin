@@ -1,0 +1,10 @@
+= content_for :title, "MeuteWiki"
+= form_for :wiki_page,
+    :url => { :controller => :meutewiki, :action => "update", :name => @wiki_page.name },
+    :html => {}, :remote => true do |f|
+  = f.text_area :raw_data
+  #form_controls
+    = f.submit t("Save")
+    = f.submit t("Save and continue")
+    %button= t("Preview")
+    = f.submit t("Cancel")

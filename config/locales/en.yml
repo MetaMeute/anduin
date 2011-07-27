@@ -3,3 +3,6 @@
 
 en:
   hello: "Hello world"
+  "Save": "Save"
+  "Cancel": "Cancel"
+  "Save and continue": "Save and continue"
