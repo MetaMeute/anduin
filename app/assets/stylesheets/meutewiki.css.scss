@@ -6,3 +6,8 @@ body.meutewiki {
   // Add the meutewiki class to your body tag
   // Then, place scoped styles here.
 }
+
+form div#page_content.preview {
+  background : #efefef;
+  border : solid 1px;
+}

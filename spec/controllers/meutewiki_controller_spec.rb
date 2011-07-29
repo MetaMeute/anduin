@@ -52,17 +52,74 @@ describe MeutewikiController do
     end
 
     describe "GET 'show'" do
-      it "should render the page" do
-        get 'show', :name => 'TestPage'
-        assigns(:wiki_page).should_not be_nil
-      end
-
-      it "should render the new template" do
+      it "should render an existing page" do
         get 'show', :name => 'TestPage'
         response.should be_success
         response.should render_template('meutewiki/show')
+        assigns(:wiki_page).should_not be_nil
+      end
+
+      it "should redirect to the edit action for non-existing pages" do
+        get 'show', :name => 'SomeThingNew'
+        response.should redirect_to meutewiki_edit_page_path('SomeThingNew')
       end
     end
   end
 
+  describe "GET 'edit'" do
+    it "should render the edit partial" do
+      get 'edit', {:name => 'SomeThingNew'}
+      response.should be_success
+      response.should render_template('meutewiki/edit')
+    end
+
+    describe "with non-existing page" do
+      before(:each) { get 'edit', {:name => 'SomeThingNew'} }
+      it { assigns(:wiki_page).should_not be_nil }
+      it { assigns(:wiki_page).name.should eq('SomeThingNew') }
+      it { assigns(:wiki_page).format.should eq(:markdown) }
+    end
+
+    describe "with existing page" do
+      it "should assign the existing wiki page" do
+        get 'edit', {:name => 'TestPage'}
+        assigns(:wiki_page).should_not be_nil
+      end
+    end
+  end
+
+  describe "PUT 'update'" do
+    let(:content) do
+      "# Title #
+
+      This is some test *page* data
+      "
+    end
+    let(:data) do
+      {:wiki_page => { :raw_data => content},
+       :name => 'SomeThingNew'}
+    end
+
+    describe "HTML request" do
+      describe "saving the page" do
+        after(:each) do
+          assigns(:wiki).page('SomeThingNew').should_not be_nil
+          assigns(:wiki).repo.update_ref("master","37a3f16436c639bada9fdb53b0c2a76af59928d7")
+        end
+        it "should show the page when save is clicked" do
+          put 'update', data.merge({:commit => 'Save'})
+          response.should redirect_to(meutewiki_show_page_path('SomeThingNew'))
+        end
+        it "should show the edit page when save and continue is clicked" do
+          put 'update', data.merge({:commit => 'Save and continue'})
+          response.should redirect_to(meutewiki_edit_page_path('SomeThingNew'))
+        end
+      end
+      describe "not saving the page" do
+      end
+    end
+
+    describe "AJAX request" do
+    end
+  end
 end

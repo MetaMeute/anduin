@@ -11,6 +11,7 @@
 %body
   #page
     = render :partial => 'share/navigation'
+    #flash= render :partial => 'share/flash'
     #content-outer
       = render :partial => 'share/sidebars'
       = yield
