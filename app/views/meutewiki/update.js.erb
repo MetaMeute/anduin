@@ -4,13 +4,13 @@ $("#notice").slideDown().delay(3000).slideUp();
 
 <% case @button %>
 <% when /^Preview$/ %>
-  $("form #wiki_page_raw_data").hide();
-  $("form div#page_content.preview").show();
-  $("form div#page_content.preview").html("<%= escape_javascript @wiki_page.formatted_data.html_safe %>");
+  $("form div#page_content.preview > #wiki_page_raw_data").hide();
+  $("form div#page_content.preview > div#preview_area").show();
+  $("form div#page_content.preview > div#preview_area").html("<%= escape_javascript @wiki_page.formatted_data.html_safe %>");
   $("form input#preview_button").attr('value', "<%= t 'Close Preview' %>");
 <% when /^Close Preview$/ %>
-  $("form #wiki_page_raw_data").show();
-  $("form div#page_content.preview").hide();
+  $("form div#page_content.preview > #wiki_page_raw_data").show();
+  $("form div#page_content.preview > div#preview_area").hide();
   $("form input#preview_button").attr('value', "<%= t 'Preview' %>");
 <% when /^Cancel$/ %>
 <% # FIXME: this is ugly, add unobstrusive javascript to show action and update contents %>

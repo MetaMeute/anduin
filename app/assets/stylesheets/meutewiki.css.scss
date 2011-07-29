@@ -8,6 +8,11 @@ body.meutewiki {
 }
 
 form div#page_content.preview {
-  background : #efefef;
   border : solid 1px;
+  background : #efefef;
+}
+
+form div#page_content.preview > textarea {
+  background : #efefef;
+  width : 100%;
 }
