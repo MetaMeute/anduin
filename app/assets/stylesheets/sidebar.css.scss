@@ -1,0 +1,15 @@
+div#sidebar-left, div#sidebar-right {
+        width:200px;
+        border-top: 2px solid #666666;
+        border-bottom: 2px solid #666666;
+        margin-top:7ex;
+        padding-bottom:5ex;
+}
+div#sidebar-left {
+        float:left;
+        margin-left:.5em;
+}
+div#sidebar-right {
+        float:right;
+        margin-right:.5em;
+}
