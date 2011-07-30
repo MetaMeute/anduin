@@ -122,10 +122,16 @@ describe MeutewikiController do
           assigns(:wiki_page).should_not be_nil
           assigns(:button).should eq('Preview')
         end
+
+        it "should redirect to the show action, when user canceled" do
+          put 'update', data.merge({:commit => 'Cancel'})
+          response.should redirect_to(meutewiki_show_page_path('SomeThingNew'))
+        end
       end
     end
 
     describe "AJAX request" do
+      it { pending "someone needs to implement tests!" }
     end
   end
 end
