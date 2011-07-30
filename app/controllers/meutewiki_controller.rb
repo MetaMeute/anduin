@@ -40,7 +40,9 @@ class MeutewikiController < ApplicationController
 
     url = button_path_for(params[:commit])
     @button = params[:commit]
-    respond_with(@wiki_page, @button, :location => url)
+    respond_with(@wiki_page, @button, :location => url) do |format|
+      format.html { render 'edit', {:wiki_page => @wiki_page, :button => @button} } if @button == 'Preview'
+    end
   end
 
   private
@@ -50,8 +52,6 @@ class MeutewikiController < ApplicationController
       when /^Save$/
         url = meutewiki_show_page_path(params[:name])
       when /^Save and continue$/
-        url = meutewiki_edit_page_path(params[:name])
-      when /^Preview$/
         url = meutewiki_edit_page_path(params[:name])
       when /^Cancel/
         url = meutewiki_show_page_path(params[:name])

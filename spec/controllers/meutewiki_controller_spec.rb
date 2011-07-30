@@ -118,7 +118,8 @@ describe MeutewikiController do
       describe "not saving the page" do
         it "should redirect to edit with preview parameter set" do
           put 'update', data.merge({:commit => 'Preview'})
-          response.should redirect_to(meutewiki_edit_page_path('SomeThingNew'))
+          response.should render_template('meutewiki/edit')
+          assigns(:wiki_page).should_not be_nil
           assigns(:button).should eq('Preview')
         end
       end
