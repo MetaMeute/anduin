@@ -3,8 +3,12 @@
     :url => { :controller => :meutewiki, :action => "update", :name => @wiki_page.name },
     :html => {}, :remote => true do |f|
   #page_content.preview
-    #preview_area
     = f.text_area :raw_data
+    #preview_area
+      - if @button == 'Preview'
+        %h6= t "Preview"
+        %hr
+        = @wiki_page.formatted_data.html_safe
   #form_controls
     = f.submit t("Save")
     = f.submit t("Save and continue")

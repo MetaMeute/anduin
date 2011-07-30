@@ -51,6 +51,8 @@ class MeutewikiController < ApplicationController
         url = meutewiki_show_page_path(params[:name])
       when /^Save and continue$/
         url = meutewiki_edit_page_path(params[:name])
+      when /^Preview$/
+        url = meutewiki_edit_page_path(params[:name])
       when /^Cancel/
         url = meutewiki_show_page_path(params[:name])
     end

@@ -3,7 +3,11 @@ require 'spec_helper'
 describe "meutewiki/edit.html.haml" do
   describe "with existing wiki page" do
     before(:each) do
-      assign(:wiki_page, double("Gollum::Page", :name => "Testpage", :raw_data => "# some header #"))
+      assign(:wiki_page, double("Gollum::Page",
+                                :name => "Testpage",
+                                :raw_data => "# some header #",
+                                :formatted_data => "<h1>some header</h1>")
+            )
       render
     end
 
@@ -19,8 +23,15 @@ describe "meutewiki/edit.html.haml" do
       rendered.should have_css("input[type=hidden]", :value => "TestPage")
     end
 
-    it "should render a preview area" do
-      rendered.should have_css("div#page_content.preview")
+    describe "preview area" do
+      it { rendered.should have_css("div#page_content.preview") }
+      it "should render the preview when requested" do
+        assign(:button, 'Preview')
+        render
+        rendered.should have_css("div#page_content.preview h6", :text => 'Preview')
+        rendered.should have_css("div#page_content.preview hr")
+        rendered.should have_css("div#page_content.preview h1", :text => "some header")
+      end
     end
 
     it "should render submit buttons" do
