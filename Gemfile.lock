@@ -151,6 +151,8 @@ GEM
       ffi (>= 1.0.7)
       json_pure
       rubyzip
+    simple-navigation (3.3.4)
+      activesupport (>= 2.3.2)
     sinatra (1.2.6)
       rack (~> 1.1)
       tilt (>= 1.2.2, < 2.0)
@@ -187,6 +189,7 @@ DEPENDENCIES
   rdiscount
   rspec-rails
   sass-rails (~> 3.1.0.rc)
+  simple-navigation
   sqlite3
   therubyracer
   uglifier
