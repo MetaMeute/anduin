@@ -24,4 +24,7 @@ Anduin::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
+
+  # Set mailer options for devise
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
