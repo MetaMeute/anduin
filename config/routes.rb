@@ -1,4 +1,6 @@
 Anduin::Application.routes.draw do
+  devise_for :users
+
   namespace :meutewiki do
     get '/', :action => 'front_page'
     get 'index'
