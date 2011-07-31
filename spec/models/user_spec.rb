@@ -20,10 +20,8 @@ describe User do
 
     after(:each) { user.should be_valid }
     it "might have a nickname" do
-      pending "implement me!" do
-        user.nick = 'gandalf'
-        user.nick.should eq('gandalf')
-      end
+      user.nick = 'gandalf'
+      user.nick.should eq('gandalf')
     end
   end
 end
