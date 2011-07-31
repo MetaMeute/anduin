@@ -17,5 +17,13 @@ describe User do
   describe "optional information" do
     let(:user) { User.find_by_email('test@example.com') }
     before(:each) { User.create!(:email => 'test@example.com', :password => 'testpassword') }
+
+    after(:each) { user.should be_valid }
+    it "might have a nickname" do
+      pending "implement me!" do
+        user.nick = 'gandalf'
+        user.nick.should eq('gandalf')
+      end
+    end
   end
 end
