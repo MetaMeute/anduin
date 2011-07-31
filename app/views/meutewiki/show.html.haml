@@ -1,3 +1,9 @@
 = content_for :title, "MeuteWiki"
+= content_for :sidebar_left do
+  = menu_head t( :wiki_menu, :scope => :meutewiki )
+  %ul.menu
+    = menu_item t(:edit, :scope => :meutewiki), meutewiki_edit_page_path(@wiki_page.name)
+    = menu_item t(:history, :scope => :meutewiki), meutewiki_edit_page_path(@wiki_page.name)
+
 #page_content
   = @wiki_page.formatted_data.html_safe

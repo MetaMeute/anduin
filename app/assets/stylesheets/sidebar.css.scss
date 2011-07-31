@@ -4,6 +4,27 @@ div#sidebar-left, div#sidebar-right {
   border-bottom: 2px solid #666666;
   margin-top:7ex;
   padding-bottom:5ex;
+
+  h3.menu {
+    background : #ffffcc;
+    color : #336633;
+    margin-bottom : 0px;
+    border-bottom : 1px solid #666666;
+  }
+  ul.menu {
+    margin-top : 0px;
+    padding-left : 0px;
+    list-style-type : none;
+    li {
+      background : #ffffcc;
+    }
+    li:hover {
+      background : #cccccc;
+    }
+    li a {
+      text-decoration : none;
+    }
+  }
 }
 div#sidebar-left {
   float:left;
