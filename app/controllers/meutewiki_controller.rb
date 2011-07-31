@@ -26,15 +26,15 @@ class MeutewikiController < ApplicationController
     commit = {}
     commit.merge({:message => params[:message]}) if params[:message]
     @wiki_page = @wiki.page(params[:name])
-    if params[:commit] =~ /^Save/ && @wiki_page then
+    if params[:commit] == t("Save") && @wiki_page then
       @wiki.update_page(@wiki_page, params[:name], :markdown, params[:wiki_page][:raw_data], commit)
       flash[:notice] = t "Page updated."
-    elsif params[:commit] =~ /^Save/ && @wiki_page.nil? then
+    elsif params[:commit] == t("Save and continue") && @wiki_page.nil? then
       @wiki_page = @wiki.write_page(params[:name], :markdown, params[:wiki_page][:raw_data], commit)
       flash[:notice] = t "Page created."
-    elsif params[:commit] =~ /^Preview$/ then
+    elsif params[:commit] == t("Preview") then
       @wiki_page = @wiki.preview_page(params[:name], params[:wiki_page][:raw_data], :markdown)
-    elsif params[:commit] =~ /^Cancel$/ then
+    elsif params[:commit] == t("Cancel") then
       flash[:notice] = t "Update cancelled."
     end
 
@@ -49,11 +49,11 @@ class MeutewikiController < ApplicationController
 
   def button_path_for(button)
     case button
-      when /^Save$/
+      when t("Save")
         url = meutewiki_show_page_path(params[:name])
-      when /^Save and continue$/
+      when t("Save and continue")
         url = meutewiki_edit_page_path(params[:name])
-      when /^Cancel/
+      when t("Cancel")
         url = meutewiki_show_page_path(params[:name])
     end
   end

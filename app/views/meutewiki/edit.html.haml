@@ -5,7 +5,7 @@
   #page_content.preview
     = f.text_area :raw_data
     #preview_area
-      - if @button == 'Preview'
+      - if @button == t("Preview")
         %h6= t "Preview"
         %hr
         = @wiki_page.formatted_data.html_safe
