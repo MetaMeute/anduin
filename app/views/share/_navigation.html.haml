@@ -1,11 +1,2 @@
 #navigation
-  %ul
-    %li= link_to t "Startseite"
-    %li= link_to t "MetaMeute"
-    %li
-      = link_to t "Projekte"
-      %ul
-        - if @projects
-          - @projects.each do |project|
-            %li= link_to project.name
-    %li{:class => "right"}= link_to t "Login"
+  = render_navigation
