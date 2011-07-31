@@ -1,7 +1,6 @@
-#sidebar-left
-  %h3= t "Wiki-Menü"
+- if content_for? :sidebar_left
+  #sidebar-left= yield :sidebar_left
 
-#sidebar-right
-  %h3= t "Events"
-  %h3= t "Letzte Änderungen"
+- if content_for? :sidebar_right
+  #sidebar-right= yield :sidebar_right
 
