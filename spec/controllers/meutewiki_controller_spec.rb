@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe MeutewikiController do
 
+  before(:each) do
+    request.env['HTTP_ACCEPT_LANGUAGE'] = "de, en"
+  end
+
   it "should assign a wiki with correct base path" do
     get 'front_page'
     assigns(:wiki).base_path.should eq("/meutewiki")
@@ -109,6 +113,7 @@ describe MeutewikiController do
         it "should show the page when save is clicked" do
           put 'update', data.merge({:commit => 'Save'})
           response.should redirect_to(meutewiki_show_page_path('SomeThingNew'))
+          request.flash[:notice].should =~ /created/
         end
         it "should show the edit page when save and continue is clicked" do
           put 'update', data.merge({:commit => 'Save and continue'})
