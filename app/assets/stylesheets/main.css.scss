@@ -12,23 +12,23 @@
   url("../fonts/Vollkorn-Bold.ttf") format("truetype");
 }
 body {
-	font-size: 80.0%, Serif;
-	font-family: Vollkorn; 
-	background: #FFFFFF;
-	color: black;
-	text-align: center;
-	margin:0;
-	padding:0;
-        padding-top:2em;
-	padding-bottom:2em;
-	width:100%;
+  font-size: 80.0%, Serif;
+  font-family: Vollkorn;
+  color:#1B354C;
+  text-align: center;
+  margin:0;
+  padding:0;
+  padding-top:2em;
+  padding-bottom:2em;
+  width:100%;
+  background:#769E5A;
 }
 a:hover, a:active, a
 {
-	color:#000000;
+  color:#000000;
 }
 a:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 div#notice {
@@ -46,25 +46,30 @@ div#notice {
  *
  */
 h1,h2,h3,h4,h5 {
-	font-weight: normal;
+  font-weight: normal;
 }
 div#content-outer {
-	padding-top:.5em;
+  padding-top:.5em;
+  background:#769E5A;
 }
 div#page_content {
-	margin-left:200px;
-	margin-right:200px;
-	padding-left:1em;
-	padding-right:1em;
-	text-align: left;
+  margin-left:200px;
+  margin-right:200px;
+  padding-left:1em;
+  padding-right:1em;
+  padding-top:1ex;
+  padding-bottom:3ex;
+  text-align: left;
+  background : rgba(255,255,255,0.05);
+  border-radius : 15px;
 }
-div#title h1
+h1
 {
-	font-size:240%;
+  font-size:240%;
 }
 /* text */
 p {
-	padding:0;
-	margin:0;
-	text-indent:3ex;
+  padding:0;
+  margin:0;
+  text-indent:3ex;
 }
