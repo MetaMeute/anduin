@@ -21,7 +21,7 @@ body {
   padding-top:2em;
   padding-bottom:2em;
   width:100%;
-  background:#769E5A;
+  background:rgba(118,158,90,0.23);
 }
 a:hover, a:active, a
 {
@@ -40,7 +40,7 @@ div#notice {
   z-index : 1000;
 }
 
-/* 
+/*
  *
  * Überschirften
  *
@@ -50,7 +50,6 @@ h1,h2,h3,h4,h5 {
 }
 div#content-outer {
   padding-top:.5em;
-  background:#769E5A;
 }
 div#page_content {
   margin-left:200px;
@@ -60,7 +59,7 @@ div#page_content {
   padding-top:1ex;
   padding-bottom:3ex;
   text-align: left;
-  background : rgba(255,255,255,0.05);
+  background:rgba(118,158,90,0.23);
   border-radius : 15px;
 }
 h1
