@@ -16,3 +16,21 @@ form div#page_content.preview > textarea {
   background : #efefef;
   width : 100%;
 }
+
+div#page_content.history {
+  ol {
+    list-style-type : none;
+    text-align : left;
+  }
+  li {
+    margin-top : 1ex;
+    margin-bottom : 1ex;
+  }
+  li > div.commit {
+    display : inline;
+  }
+  li > div.author {
+    margin-left : 3em;
+    display : inline;
+  }
+}
