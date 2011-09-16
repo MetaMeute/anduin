@@ -1,0 +1,15 @@
+= content_for :title, "MeuteWiki"
+
+= content_for :sidebar_left do
+  = menu_head t( :wiki_menu, :scope => :meutewiki )
+  %ul.menu
+    = menu_item t(:edit, :scope => :meutewiki), meutewiki_edit_page_path(@wiki_page.name)
+    = menu_item t(:show, :scope => :meutewiki), meutewiki_show_page_path(@wiki_page.name)
+
+#page_content.history
+  %ol
+    - @history.each do |change|
+      %li
+        .commit= change.id_abbrev
+        .author= change.author.to_s
+        .message= change.message
