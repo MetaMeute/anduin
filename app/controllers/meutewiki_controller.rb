@@ -45,6 +45,11 @@ class MeutewikiController < ApplicationController
     end
   end
 
+  def history
+    @history = []
+    @history = @wiki.page(params[:name]).versions unless @wiki.page(params[:name]).nil?
+  end
+
   private
 
   def button_path_for(button)

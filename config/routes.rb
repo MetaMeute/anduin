@@ -5,6 +5,7 @@ Anduin::Application.routes.draw do
     get ':name/edit', :action => 'edit', :as => :edit_page
     post ':name', :action => 'update', :as => :update_page
     get ':name', :action => 'show', :as => :show_page
+    get ':name/history', :action => 'history', :as => :page_history
   end
 
   # The priority is based upon order of creation:
