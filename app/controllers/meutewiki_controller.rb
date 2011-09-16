@@ -46,8 +46,9 @@ class MeutewikiController < ApplicationController
   end
 
   def history
+    @wiki_page = @wiki.page(params[:name])
     @history = []
-    @history = @wiki.page(params[:name]).versions unless @wiki.page(params[:name]).nil?
+    @history = @wiki_page.versions unless @wiki_page.nil?
   end
 
   private

@@ -156,5 +156,10 @@ describe MeutewikiController do
       get 'history', :name => "SomeStrangeNonExistingName"
       assigns(:history).should be_empty
     end
+
+    it "should assign thi wiki page" do
+      get 'history', :name => 'TestPage'
+      assigns(:wiki_page).should_not be_nil
+    end
   end
 end
