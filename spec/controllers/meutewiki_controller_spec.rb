@@ -139,4 +139,22 @@ describe MeutewikiController do
       it { pending "someone needs to implement tests!" }
     end
   end
+
+  describe "GET 'history'" do
+    it "should render the history template" do
+      get 'history', :name => 'TestPage'
+      response.should be_success
+      response.should render_template('meutewiki/history')
+    end
+
+    it "should assign the history for existing pages" do
+      get 'history', :name => 'TestPage'
+      assigns(:history).should have(1).item
+    end
+
+    it "should assign an empty history for non-existing pages" do
+      get 'history', :name => "SomeStrangeNonExistingName"
+      assigns(:history).should be_empty
+    end
+  end
 end
