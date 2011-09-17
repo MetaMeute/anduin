@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'simple-navigation'
 
 gem 'devise'
+gem 'devise_ldap_authenticatable'
 
 gem 'gollum', '~> 1.3.0'
 gem 'rdiscount'
