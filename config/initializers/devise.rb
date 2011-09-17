@@ -2,14 +2,14 @@
 # four configuration values can also be set straight in your models.
 Devise.setup do |config|
   # ==> LDAP Configuration 
-  # config.ldap_logger = true
-  # config.ldap_create_user = false
-  # config.ldap_update_password = true
-  # config.ldap_config = "#{Rails.root}/config/ldap.yml"
-  # config.ldap_check_group_membership = false
-  # config.ldap_check_attributes = false
-  # config.ldap_use_admin_to_bind = false
-  
+  config.ldap_logger = true
+  config.ldap_create_user = false
+  config.ldap_update_password = true
+  config.ldap_config = "#{Rails.root}/config/ldap.yml"
+  config.ldap_check_group_membership = false
+  config.ldap_check_attributes = false
+  config.ldap_use_admin_to_bind = false
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
   config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
@@ -89,7 +89,7 @@ Devise.setup do |config|
 
   # If true, uses the password salt as remember token. This should be turned
   # to false if you are not using database authenticatable.
-  config.use_salt_as_remember_token = true
+  config.use_salt_as_remember_token = false
 
   # Options to be passed to the created cookie. For instance, you can set
   # :secure => true in order to force SSL only cookies.
