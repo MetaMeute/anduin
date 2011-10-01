@@ -27,13 +27,25 @@ class MeutewikiController < ApplicationController
     commit.merge({:message => params[:message]}) if params[:message]
     @wiki_page = @wiki.page(params[:name])
     if params[:commit].include?(t("Save")) && @wiki_page then
-      @wiki.update_page(@wiki_page, params[:name], :markdown, params[:wiki_page][:raw_data], commit)
+      @wiki.update_page(@wiki_page,
+                        params[:name],
+                        :markdown,
+                        params[:wiki_page][:raw_data],
+                        commit
+                       )
       flash[:notice] = t "Page updated."
     elsif params[:commit].include?(t("Save")) && @wiki_page.nil? then
-      @wiki_page = @wiki.write_page(params[:name], :markdown, params[:wiki_page][:raw_data], commit)
+      @wiki_page = @wiki.write_page(params[:name],
+                                    :markdown,
+                                    params[:wiki_page][:raw_data],
+                                    commit
+                                   )
       flash[:notice] = t "Page created."
     elsif params[:commit] == t("Preview") then
-      @wiki_page = @wiki.preview_page(params[:name], params[:wiki_page][:raw_data], :markdown)
+      @wiki_page = @wiki.preview_page(params[:name],
+                                      params[:wiki_page][:raw_data],
+                                      :markdown
+                                     )
     elsif params[:commit] == t("Cancel") then
       flash[:notice] = t "Update cancelled."
     end
