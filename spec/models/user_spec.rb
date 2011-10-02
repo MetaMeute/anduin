@@ -10,7 +10,11 @@ describe User do
 
   describe "optional information" do
     let(:user) { User.find_by_email('test@example.com') }
-    before(:each) { User.create!(:email => 'test@example.com') }
+    before(:each) do
+      u = User.create!
+      u.email = 'test@example.com'
+      u.save!
+    end
 
     after(:each) { user.should be_valid }
     it "might have a nickname" do

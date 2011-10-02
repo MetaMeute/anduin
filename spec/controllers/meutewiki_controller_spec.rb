@@ -103,6 +103,7 @@ describe MeutewikiController do
       {:wiki_page => { :raw_data => content},
        :name => 'SomeThingNew'}
     end
+    before(:each) { controller.stub!(:current_user){ double(User, :git_config => GitConfig.new)} }
 
     describe "HTML request" do
       describe "saving the page" do

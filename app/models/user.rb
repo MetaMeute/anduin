@@ -4,5 +4,9 @@ class User < ActiveRecord::Base
   devise :ldap_authenticatable, :rememberable, :trackable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :nick, :email, :password, :password_confirmation, :remember_me
+
+  has_one :git_config, :dependent => :destroy
+
+  after_create :create_git_config
 end

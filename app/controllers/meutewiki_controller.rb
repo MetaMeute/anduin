@@ -2,6 +2,7 @@ class MeutewikiController < ApplicationController
   respond_to :html, :js
 
   before_filter :load_wiki
+  before_filter :fetch_commit_info, :only => [:update]
 
   def index
     @wiki_pages = @wiki.pages.nil? ? [] : @wiki.pages
@@ -23,22 +24,20 @@ class MeutewikiController < ApplicationController
   end
 
   def update
-    commit = {}
-    commit.merge({:message => params[:message]}) if params[:message]
     @wiki_page = @wiki.page(params[:name])
     if params[:commit].include?(t("Save")) && @wiki_page then
       @wiki.update_page(@wiki_page,
                         params[:name],
                         :markdown,
                         params[:wiki_page][:raw_data],
-                        commit
+                        @commit_info
                        )
       flash[:notice] = t "Page updated."
     elsif params[:commit].include?(t("Save")) && @wiki_page.nil? then
       @wiki_page = @wiki.write_page(params[:name],
                                     :markdown,
                                     params[:wiki_page][:raw_data],
-                                    commit
+                                    @commit_info
                                    )
       flash[:notice] = t "Page created."
     elsif params[:commit] == t("Preview") then
@@ -78,6 +77,16 @@ class MeutewikiController < ApplicationController
 
   def load_wiki
     @wiki = Gollum::Wiki.new(MEUTEWIKI_CONFIG['repo'], :base_path => MEUTEWIKI_CONFIG['base_path'])
+  end
+
+  def fetch_commit_info
+    author = current_user.git_config.name
+    email = current_user.git_config.email
+    @commit_info = {}
+    @commit_info.merge({:message => params[:message]}) if params[:message]
+    @commit_info.merge({:author => author}) unless author.nil?
+    @commit_info.merge({:email => email}) unless email.nil?
+
   end
 
 end
