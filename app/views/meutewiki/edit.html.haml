@@ -1,4 +1,13 @@
 = content_for :title, "MeuteWiki"
+
+= content_for :sidebar_left do
+  = menu_head t( :wiki_menu, :scope => :meutewiki )
+  %ul.menu
+    = menu_item t(:index, :scope => :meutewiki), meutewiki_index_path
+    = menu_item t(:show, :scope => :meutewiki), meutewiki_show_page_path(@wiki_page.name)
+    = menu_item t(:edit, :scope => :meutewiki), meutewiki_edit_page_path(@wiki_page.name)
+    = menu_item t(:history, :scope => :meutewiki), meutewiki_page_history_path(@wiki_page.name)
+
 = form_for :wiki_page,
     :url => { :controller => :meutewiki, :action => "update", :name => @wiki_page.name },
     :html => {}, :remote => true do |f|
