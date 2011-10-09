@@ -51,8 +51,8 @@ class MeutewikiController < ApplicationController
 
     url = button_path_for(params[:commit])
     @button = params[:commit]
-    respond_with(@wiki_page, @button, :location => url) do |format|
-      format.html { render 'edit', {:wiki_page => @wiki_page, :button => @button} } if @button == 'Preview'
+    respond_with(@wiki_page, @button, @commit_info, :location => url) do |format|
+      format.html { render 'edit', {:wiki_page => @wiki_page, :button => @button, :commit_info => @commit_info} } if @button == 'Preview'
     end
   end
 
@@ -83,10 +83,9 @@ class MeutewikiController < ApplicationController
     author = current_user.git_config.name
     email = current_user.git_config.email
     @commit_info = {}
-    @commit_info.merge({:message => params[:message]}) if params[:message]
-    @commit_info.merge({:author => author}) unless author.nil?
-    @commit_info.merge({:email => email}) unless email.nil?
-
+    @commit_info.merge!({:message => params[:message]}) unless params[:message].nil?
+    @commit_info.merge!({:author => author}) unless author.nil?
+    @commit_info.merge!({:email => email}) unless email.nil?
   end
 
 end

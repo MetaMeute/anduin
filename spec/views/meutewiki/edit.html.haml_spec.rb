@@ -8,6 +8,7 @@ describe "meutewiki/edit.html.haml" do
                                 :raw_data => "# some header #",
                                 :formatted_data => "<h1>some header</h1>")
             )
+      assign(:commit_info, {})
       render
     end
 

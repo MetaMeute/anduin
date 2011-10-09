@@ -8,10 +8,17 @@ $("#notice").slideDown().delay(3000).slideUp();
   $("form div#page_content.preview > div#preview_area").show();
   $("form div#page_content.preview > div#preview_area").html("<%= escape_javascript @wiki_page.formatted_data.html_safe %>");
   $("form input#preview_button").attr('value', "<%= t 'Close Preview' %>");
+
+  $("form div#commit_message_edit").hide();
+  $("form div#commit_message_preview").show();
+  $("form div#commit_message_preview").html('<div><%= escape_javascript "\"#{@commit_info[:author]}\" <#{@commit_info[:email]}>" %></div><div><%= escape_javascript "#{@commit_info[:message]}" %></div>')
 <% when t("Close Preview") %>
   $("form div#page_content.preview > #wiki_page_raw_data").show();
   $("form div#page_content.preview > div#preview_area").hide();
   $("form input#preview_button").attr('value', "<%= t 'Preview' %>");
+
+  $("form div#commit_message_edit").show();
+  $("form div#commit_message_preview").hide();
 <% when t("Cancel") %>
 <% # FIXME: this is ugly, add unobstrusive javascript to show action and update contents %>
   window.location = "<%= meutewiki_show_page_url(@wiki_page.name) %>";

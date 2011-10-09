@@ -18,6 +18,16 @@
         %h6= t "Preview"
         %hr
         = @wiki_page.formatted_data.html_safe
+  #commit_message
+    #commit_message_edit
+      = label nil, t(:message, :scope => :meutewiki)
+      = text_field nil, :message
+    #commit_message_preview
+      - if @button == t("Preview")
+        %h6= t "Preview"
+        %hr
+        %div= "\"#{@commit_info[:author]}\" <#{@commit_info[:email]}>"
+        %div= "#{@commit_info[:message]}"
   #form_controls
     = f.submit t("Save")
     = f.submit t("Save and continue")
