@@ -10,6 +10,8 @@ Anduin::Application.routes.draw do
     get ':name/history', :action => 'history', :as => :page_history
   end
 
+  resources :git_config
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

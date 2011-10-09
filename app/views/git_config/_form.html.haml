@@ -1,0 +1,9 @@
+= form_for :git_config, :url => { :action => "update" }, :method => :put do |f|
+  #edit_name
+    = f.label :name
+    = f.text_field :name
+  #edit_email
+    = f.label :email
+    = f.email_field :email
+  #edit_buttons
+    = f.submit

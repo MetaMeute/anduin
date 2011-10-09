@@ -1,0 +1,2 @@
+module GitConfigHelper
+end
