@@ -1,4 +1,7 @@
 Anduin::Application.routes.draw do
+  get "users/sign_up"
+  post "users/register"
+
   devise_for :users
 
   namespace :meutewiki do
