@@ -80,11 +80,11 @@ class MeutewikiController < ApplicationController
   end
 
   def fetch_commit_info
-    author = current_user.git_config.name
+    name = current_user.git_config.name
     email = current_user.git_config.email
     @commit_info = {}
     @commit_info.merge!({:message => params[:message]}) unless params[:message].nil?
-    @commit_info.merge!({:author => author}) unless author.nil?
+    @commit_info.merge!({:name => name}) unless name.nil?
     @commit_info.merge!({:email => email}) unless email.nil?
   end
 
