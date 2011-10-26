@@ -11,7 +11,7 @@ $("#notice").slideDown().delay(3000).slideUp();
 
   $("form div#commit_message_edit").hide();
   $("form div#commit_message_preview").show();
-  $("form div#commit_message_preview").html('<div><%= escape_javascript "\"#{@commit_info[:author]}\" <#{@commit_info[:email]}>" %></div><div><%= escape_javascript "#{@commit_info[:message]}" %></div>')
+  $("form div#commit_message_preview").html('<div><%= escape_javascript "\"#{@commit_info[:name]}\" <#{@commit_info[:email]}>" %></div><div><%= escape_javascript "#{@commit_info[:message]}" %></div>')
 <% when t("Close Preview") %>
   $("form div#page_content.preview > #wiki_page_raw_data").show();
   $("form div#page_content.preview > div#preview_area").hide();

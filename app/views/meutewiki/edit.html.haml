@@ -26,7 +26,7 @@
       - if @button == t("Preview")
         %h6= t "Preview"
         %hr
-        %div= "\"#{@commit_info[:author]}\" <#{@commit_info[:email]}>"
+        %div= "\"#{@commit_info[:name]}\" <#{@commit_info[:email]}>"
         %div= "#{@commit_info[:message]}"
   #form_controls
     = f.submit t("Save")
