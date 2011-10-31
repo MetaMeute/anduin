@@ -75,3 +75,20 @@ p {
   margin:.5ex;
   text-indent:2em;
 }
+table {
+  border: 0px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-spacing: 0;
+  th {
+    padding: 3px;
+    margin: 0px;
+    border: 0px;
+    border-bottom: 1px solid black;
+  }
+  td {
+    padding: 3px;
+    margin: 0px;
+  }
+}
+
