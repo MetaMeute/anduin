@@ -1,4 +1,4 @@
-$("#flash").html("<%= escape_javascript render(:partial => 'share/flash_message', :locals => {:flash => flash}) %>");
+$("#flash").html("<%= escape_javascript render(:partial => 'share/flash_messages', :locals => {:flash => flash}) %>");
 $("#notice").slideDown().delay(3000).slideUp();
 <% flash.discard %>
 
