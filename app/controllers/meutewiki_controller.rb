@@ -9,9 +9,19 @@ class MeutewikiController < ApplicationController
   end
 
   def show
-    @wiki_page = @wiki.page(params[:name])
-    if @wiki_page.nil? then
-      redirect_to meutewiki_edit_page_path(params[:name])
+    if isAssetFormat(params[:format]) then
+      name = "#{params[:name]}.#{params[:format]}"
+      file = @wiki.file(name)
+      respond_to do |format|
+        format.png { send_data(file.raw_data, :filename => name, :type => "image/png") }
+        format.pdf { send_data(file.raw_data, :filename => name, :type => "image/pdf") }
+        format.jpg { send_data(file.raw_data, :filename => name, :type => "image/jpeg") }
+      end
+    else
+      @wiki_page = @wiki.page(params[:name])
+      if @wiki_page.nil? then
+        redirect_to meutewiki_edit_page_path(params[:name])
+      end
     end
   end
 
@@ -86,6 +96,19 @@ class MeutewikiController < ApplicationController
     @commit_info.merge!({:message => params[:message]}) unless params[:message].nil?
     @commit_info.merge!({:name => name}) unless name.nil?
     @commit_info.merge!({:email => email}) unless email.nil?
+  end
+
+  def isAssetFormat(f)
+    case f
+    when "png"
+      true
+    when "jpg"
+      true
+    when "pdf"
+      true
+    else
+      false
+    end
   end
 
 end
