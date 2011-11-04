@@ -1,5 +1,7 @@
 - if content_for? :sidebar_left
-  #sidebar-left= yield :sidebar_left
+  #sidebar-left
+    = render :partial => 'share/logo'
+    = yield :sidebar_left
 
 - if content_for? :sidebar_right
   #sidebar-right= yield :sidebar_right

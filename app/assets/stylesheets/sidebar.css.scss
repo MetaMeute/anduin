@@ -1,16 +1,20 @@
 div#sidebar-left, div#sidebar-right {
   width:180px;
-  border-top: 2px solid #666666;
-  border-bottom: 2px solid #666666;
-  margin-top:7ex;
+
+  #meutelogo > img {
+    width:100%;
+    margin: 2ex 0 7ex;
+  }
 
   h3.menu {
+  border-top: 2px solid #666666;
     color : #336633;
     margin-top : 5px;
     margin-bottom : 0px;
     border-bottom : 1px solid #666666;
   }
   ul.menu {
+  border-bottom: 2px solid #666666;
     margin-top : 7px;
     margin-bottom : 7px;
     padding-left : 0px;
