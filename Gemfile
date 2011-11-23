@@ -19,7 +19,7 @@ gem 'devise'
 gem 'devise_ldap_authenticatable'
 gem 'net-ldap'
 
-gem 'gollum', '~> 1.3.0'
+gem 'gollum'
 gem 'rdiscount'
 
 group :development, :test do
