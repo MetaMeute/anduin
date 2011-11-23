@@ -21,6 +21,7 @@ gem 'net-ldap'
 
 gem 'gollum'
 gem 'rdiscount'
+gem 'rdoc', "< 3.10"
 
 group :development, :test do
   gem 'rspec-rails'
