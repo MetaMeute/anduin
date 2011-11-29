@@ -40,7 +40,7 @@ describe GitConfigController do
 
     it "should be successful" do
       put 'update', params
-      response.should redirect_to(edit_git_config_path(params[:id]))
+      response.should render_template('edit')
       GitConfig.find(params[:id]).name.should == "Testname"
     end
   end
