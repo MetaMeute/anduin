@@ -20,9 +20,11 @@ div#sidebar-left, div#sidebar-right {
     padding-left : 0px;
     list-style-type : none;
     li {
+		border-radius: .5ex;
     }
     li:hover {
-      background : #557E37;
+      	background:rgba(118,158,90,0.62);
+      ;
     }
     li a {
       text-decoration : none;
