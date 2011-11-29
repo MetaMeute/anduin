@@ -13,4 +13,8 @@ Feature: Recent changes
     Given I am on the wiki front page
     When I follow "History"
     Then I should see a list with changes
+    And the list contains:
+      | author       |
+      | Julian Bäume |
+      | Julian Bäume |
 
