@@ -44,6 +44,8 @@ ul#pageindex {
     white-space:nowrap;
     width:33%;
     float:left;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
