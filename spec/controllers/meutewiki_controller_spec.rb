@@ -149,15 +149,15 @@ describe MeutewikiController do
       it "should assign the authors git config" do
         controller.stub!(:current_user) { double(User, :git_config => git_config) }
         put 'update', data.merge({:message => "Test message", :commit => 'Preview'})
-        assigns(:commit_info)[:author].should == git_config.name
+        assigns(:commit_info)[:name].should == git_config.name
         assigns(:commit_info)[:email].should == git_config.email
       end
 
       it "should not assign nothing for unset config variables" do
         controller.stub!(:current_user) { double(User, :git_config => double(GitConfig, :name => nil, :email => nil)) }
         put 'update', data.merge({:message => "Test message", :commit => 'Preview'})
-        assigns(:commit_info)[:author].should be_nil
-          assigns(:commit_info)[:email].should be_nil
+        assigns(:commit_info)[:name].should be_nil
+        assigns(:commit_info)[:email].should be_nil
       end
     end
 
