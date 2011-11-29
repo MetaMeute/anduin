@@ -23,6 +23,7 @@ div#navigation {
 #navigation ul li /* A simple method to get navigation links to appear in one line. */ {
   float: left; /* LTR */
   padding: .75ex 2em; /* LTR */
+  padding-top:.5ex;
   padding-bottom:0;
   margin:0;
   list-style-image: none;
@@ -30,7 +31,6 @@ div#navigation {
   position:relative;
   border: 2px solid #333333;
   border: 2px solid rgba(51,51,51,0);
-  border-top:0;
   height:100%;
 }
 #navigation ul li.right {
@@ -47,8 +47,8 @@ float:right;
 #navigation ul li ul li:hover
 {
   background:#333333;
-  border-left: 2px solid #6699AA;
-  border-right: 2px solid #6699AA;
+  border: 2px solid #6699AA;
+  border-radius: 1em;
 }
 #navigation ul li:hover a,
 #navigation ul li:hover ul li:hover a

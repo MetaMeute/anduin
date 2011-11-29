@@ -17,16 +17,19 @@ div#sidebar-left, div#sidebar-right {
   border-bottom: 2px solid #666666;
     margin-top : 7px;
     margin-bottom : 7px;
-    padding-left : 0px;
+    padding-left : .5em;
     list-style-type : none;
+    text-align:left;
     li {
-		border-radius: .5ex;
-    }
-    li:hover {
-      	background:rgba(118,158,90,0.62);
-      ;
+      padding: .25ex .25em;  
     }
     li a {
+      padding: .25ex .5em;  
+      text-decoration : none;
+    }
+    li a:hover {
+      border-radius: .5em;
+      background:rgba(118,158,90,0.62);
       text-decoration : none;
     }
   }
