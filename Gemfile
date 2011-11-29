@@ -26,4 +26,5 @@ gem 'rdoc', "< 3.10"
 group :development, :test do
   gem 'rspec-rails'
   gem 'cucumber-rails'
+  gem 'spork'
 end
