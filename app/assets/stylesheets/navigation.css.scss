@@ -1,13 +1,13 @@
 div#navigation {
-        width:100%;
-        background:rgba(79,108,133,0.77);
-        height:auto;
-        margin:0;
-        vertical-align:middle;
-        z-index:2;
-        overflow: visible;
-        position:fixed; top:0;
-        border:0px;
+  width:100%;
+  background:rgba(79,108,133,0.88);
+  height:auto;
+  margin:0;
+  vertical-align:middle;
+  z-index:2;
+  overflow: visible;
+  position:fixed; top:0;
+  border:0px;
 }
 #navigation ul /* Primary and secondary links */ {
   margin: 0;
@@ -24,7 +24,7 @@ div#navigation {
   float: left; /* LTR */
   padding: .75ex 2em; /* LTR */
   padding-top:.5ex;
-  padding-bottom:0;
+  padding-bottom:.75ex;
   margin:0;
   list-style-image: none;
   list-style-type: none;
@@ -48,7 +48,7 @@ float:right;
 {
   background:#333333;
   border: 2px solid #6699AA;
-  border-radius: 1em;
+  border-radius: 1.5ex;
 }
 #navigation ul li:hover a,
 #navigation ul li:hover ul li:hover a
@@ -74,9 +74,8 @@ float:right;
   z-index:2;
   white-space:nowrap;
   background: none;
-  border-left: 2px solid rgba(79,108,133,0.77);
-  border-right: 2px solid rgba(79,108,133,0.77);
-  border-bottom: 2px solid rgba(79,108,133,0.77);
+  border: 2px solid rgba(79,108,133,0.77);
+  border-top:0px;
 }
 #navigation ul li:hover ul,
 #navigation ul li.active-trail ul {

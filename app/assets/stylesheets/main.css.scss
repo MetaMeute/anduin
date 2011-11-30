@@ -1,19 +1,32 @@
 @font-face {
   font-family:Vollkorn;
-  src: url("../fonts/Vollkorn-Regular.eot");
-  src: local("Vollkorn"), url("../fonts/Vollkorn-Regular.woff") format("woff"),
-  url("../fonts/Vollkorn-Regular.ttf") format("truetype");
+  src: url("Vollkorn-Regular.eot");
+  src: local("Vollkorn"), url("Vollkorn-Regular.woff") format("woff"),
+  url("Vollkorn-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family:Vollkorn;
   font-weight: bold;
-  src: url("../fonts/Vollkorn-Bold.eot");
-  src: local("Vollkorn"), url("../fonts/Vollkorn-Bold.woff") format("woff"),
-  url("../fonts/Vollkorn-Bold.ttf") format("truetype");
+  src: url("Vollkorn-Bold.eot");
+  src: local("Vollkorn"), url("Vollkorn-Bold.woff") format("woff"),
+  url("Vollkorn-Bold.ttf") format("truetype");
 }
+@font-face {
+  font-family:Linux Libertine;
+  src: local("Linux Libertine"), url("LinLibertine_R.woff") format("woff"),
+  url("LinLibertine_R.ttf") format("truetype");
+}
+@font-face {
+  font-family:Linux Libertine;
+  font-weight:bold;
+  src: local("Linux Libertine"), url("LinLibertine_RB.woff") format("woff"),
+  url("LinLibertine_RB.ttf") format("truetype");
+}
+
 body {
   font-size: 80.0%, Serif;
-  font-family: Vollkorn;
+/*  font-family: Vollkorn; */
+  font-family: Linux Libertine, Helvetica, sans serif;
   color:#1B354C;
   text-align: center;
   margin:0;
@@ -21,7 +34,7 @@ body {
   padding-top:2em;
   padding-bottom:2em;
   width:100%;
-  background:rgba(118,158,90,0.23);
+  background: white;
 }
 a:hover, a:active, a
 {
@@ -34,7 +47,9 @@ a:hover {
 div#notice {
   width : 100%;
   height : 2em;
-  background:rgba(255,255,255,.75);
+  background:rgba(118,158,90,0.23);
+  border:1px solid black;
+  border-radius: 1ex;
   font-weight : bold;
   position : fixed; top : 2em;
   z-index : 1000;
@@ -46,7 +61,7 @@ div#notice {
  *
  */
 h1,h2,h3,h4,h5 {
-  font-weight: normal;
+  font-weight: bold;
 }
 div#content-outer {
   padding-top:.5em;
@@ -62,8 +77,8 @@ div#page_content {
   padding-top:1ex;
   padding-bottom:3ex;
   text-align: left;
-  background:rgba(118,158,90,0.23);
-  border-radius : 15px;
+  background:rgba(213,213,213,1);
+  border-radius : 1ex;
 }
 h1
 {
