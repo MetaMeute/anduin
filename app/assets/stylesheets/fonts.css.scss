@@ -1,0 +1,25 @@
+@font-face {
+  font-family:Vollkorn;
+  src: url("Vollkorn-Regular.eot");
+  src: local("Vollkorn"), url("Vollkorn-Regular.woff") format("woff"),
+  url("Vollkorn-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family:Vollkorn;
+  font-weight: bold;
+  src: url("Vollkorn-Bold.eot");
+  src: local("Vollkorn"), url("Vollkorn-Bold.woff") format("woff"),
+  url("Vollkorn-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family:Linux Libertine;
+  src: local("Linux Libertine"), url("LinLibertine_R.woff") format("woff"),
+  url("LinLibertine_R.ttf") format("truetype");
+}
+@font-face {
+  font-family:Linux Libertine;
+  font-weight:bold;
+  src: local("Linux Libertine"), url("LinLibertine_RB.woff") format("woff"),
+  url("LinLibertine_RB.ttf") format("truetype");
+}
+
