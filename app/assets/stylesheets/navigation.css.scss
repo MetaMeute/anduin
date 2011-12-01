@@ -67,15 +67,14 @@ float:right;
   display:none;
   width:100%;
   position:absolute; top:0ex; left:0;
-  padding:0;
-  margin:0;
-  padding-top:4.57ex;
+  padding: 5px 10px 5px 10px;
+  margin: 4.57ex 0;
   height:auto;
   z-index:2;
   white-space:nowrap;
-  background: none;
-  border: 2px solid rgba(79,108,133,0.77);
+  background:rgba(79,108,133,0.88);
   border-top:0px;
+  border-radius: 0ex 0 1ex 1ex;
 }
 #navigation ul li:hover ul,
 #navigation ul li.active-trail ul {
@@ -86,12 +85,10 @@ float:right;
         z-index:3;
 }
 #navigation ul li ul li {
-  padding: .25ex 0em; /* LTR */
+  padding: 0; /* LTR */
   z-index:2;
   width:100%;
   float:none;
-  background:rgba(51,51,51,.9);
-  border: 2px solid rgba(51,51,51,0);
   border-top:0;
 }
 #navigation ul li ul li a,
