@@ -1,3 +1,5 @@
+require Rails.root.join(File.join(["config","environments","fake_auth.rb"]))
+
 Anduin::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -36,4 +38,17 @@ Anduin::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # in an development environment this will be run for every request
+  # this sets up the fake authentication warden strategy
+  config.to_prepare do
+    ApplicationController.class_eval do
+      before_filter :wardenStrategy
+
+      private
+      def wardenStrategy
+        env['warden'].authenticate(:fake)
+      end
+    end
+  end
 end
