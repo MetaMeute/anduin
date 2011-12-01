@@ -2,7 +2,7 @@ Anduin – a Frontend for the Git-based Gollum-Wiki
 =============
 
 Working Title of the new MetaMeute homepage containing the meutewiki which is powered by gollum
-( https://github.com/github/gollum ).
+(https://github.com/github/gollum).
 A at least roughly up to date version is running at http://anduin.metameute.de/
 
 For a more recent version of the webpage (random branches from here merged at will) see http://anduintest.metameute.de/
