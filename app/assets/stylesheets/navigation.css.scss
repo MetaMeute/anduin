@@ -16,13 +16,14 @@ div#navigation {
     
     li {
       float: left;
-      padding: .75ex 1em;
+      padding: .75ex 0em;
       list-style-image: none;
       list-style-type: none;
       border: 2px solid rgba($secondary_a, 0);
       border-radius: 1.5ex;
       
       a {
+        padding: 0 1em;
         color: lighten($secondary_a, 64%);
         font-size: 110%;
         text-decoration: none;
@@ -33,12 +34,21 @@ div#navigation {
 
         li {
           float: none;
-          padding: 0.25em 0;
+          padding: 0.25em 0em;
+          border: 2px solid rgba(102,153,170,0);
+          border-left: 0px;
+          border-right: 0px;
+          border-radius: 0ex;
 
           a {
-            padding: 0 1em;
+            padding: 0 2em;
             font-size: 1em;
           }
+        }
+        li:hover {
+          border: 2px solid rgba(102,153,170,1);
+          border-left: 0px;
+          border-right: 0px;
         }
       }
     }
