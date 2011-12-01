@@ -1,101 +1,57 @@
 div#navigation {
-  width:100%;
+  position: fixed; top: 0;
+  width: 100%;
+  height: 2.5em;
+  z-index: 2;
+  font-size: 1em;
+  white-space: nowrap;
   background:rgba(79,108,133,0.88);
-  height: 5ex;
-  margin:0;
-  vertical-align:middle;
-  z-index:2;
-  overflow: visible;
-  position:fixed; top:0;
-  border:0px;
-}
-#navigation ul /* Primary and secondary links */ {
-  margin: 0;
-  padding: 0;
-  text-align: left; /* LTR */
-  margin-left:auto;
-  margin-right:auto;
-  position:relative;
-  top:0px;
-  height: auto;
-}
 
-#navigation ul li /* A simple method to get navigation links to appear in one line. */ {
-  float: left; /* LTR */
-  padding: .75ex 2em; /* LTR */
-  padding-top:.5ex;
-  padding-bottom:.75ex;
-  margin:0;
-  list-style-image: none;
-  list-style-type: none;
-  position:relative;
-  border: 2px solid #333333;
-  border: 2px solid rgba(51,51,51,0);
-  height:100%;
-}
-#navigation ul li.right {
-float:right;
-}
-#navigation ul li a {
-        color:#ffffff;
-        font-size:1.1em;
-        text-decoration:none;
-        white-space: nowrap;
-        display:block;
-}
-#navigation ul li:hover,
-#navigation ul li ul li:hover
-{
-  background:#333333;
-  border: 2px solid #6699AA;
-  border-radius: 1.5ex;
-}
-#navigation ul li:hover a,
-#navigation ul li:hover ul li:hover a
-{
-/*      text-decoration:underline; */
-}
+  ul /* Primary and secondary links */ {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    
+    li /* A simple method to get navigation links to appear in one line. */ {
+      float: left;
+      padding: .75ex 1em;
+      list-style-image: none;
+      list-style-type: none;
+      border: 2px solid rgba(102,153,170,0);
+      border-radius: 1.5ex;
+      
+      a {
+        color: #ffffff;
+        font-size: 110%;
+        text-decoration: none;
+      }
 
-#navigation ul li.active-trail {
-/*              font-style: italic; */
-}
-#navigation ul li.active-trail ul li {
-                font-style: normal;
-}
+      ul {
+        display: none;
 
-#navigation ul li ul {
-  display:none;
-  width:100%;
-  position:absolute; top:0ex; left:0;
-  padding: 5px 10px 5px 10px;
-  margin: 4.5ex 0;
-  height:auto;
-  z-index:2;
-  white-space:nowrap;
-  background:rgba(79,108,133,0.88);
-  border-top:0px;
-  border-radius: 0ex 0 1ex 1ex;
-}
-#navigation ul li:hover ul,
-#navigation ul li.active-trail ul {
+        li {
+          float: none;
+          padding: 0.25em 0;
+
+          a {
+            padding: 0 1em;
+            font-size: 1em;
+          }
+        }
+      }
+    }
+
+    li.right {
+      float: right;
+    }
+    
+    li:hover {
+      border: 2px solid rgba(102,153,170,1); 
+      background: rgba(79,108,133,0.88);
+
+      ul {
         display: block;
-}
-#navigation ul li:hover ul
-{
-        z-index:3;
-}
-#navigation ul li ul li {
-  padding: 0; /* LTR */
-  z-index:2;
-  width:100%;
-  float:none;
-  border-top:0;
-}
-#navigation ul li ul li a,
-#navigation ul li:hover ul li a {
-        font-size:1em;
-        text-decoration:none;
-        white-space: nowrap;
-        padding:0 1em;
-        margin:0;
+      }
+    }
+  }
 }
