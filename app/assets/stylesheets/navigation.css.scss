@@ -1,7 +1,7 @@
 div#navigation {
   width:100%;
   background:rgba(79,108,133,0.88);
-  height:auto;
+  height: 5ex;
   margin:0;
   vertical-align:middle;
   z-index:2;
@@ -17,7 +17,7 @@ div#navigation {
   margin-right:auto;
   position:relative;
   top:0px;
-  height:100%;
+  height: auto;
 }
 
 #navigation ul li /* A simple method to get navigation links to appear in one line. */ {
@@ -68,7 +68,7 @@ float:right;
   width:100%;
   position:absolute; top:0ex; left:0;
   padding: 5px 10px 5px 10px;
-  margin: 4.57ex 0;
+  margin: 4.5ex 0;
   height:auto;
   z-index:2;
   white-space:nowrap;
