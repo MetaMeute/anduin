@@ -28,3 +28,7 @@ git init --bare
 
 After that you can run `rails s` and point your browser to [http://localhost:3000/](http://localhost:3000) to see this
 thing in action.
+
+When running in development or test environment, signing in using any value as Nick and the password "secure!" should create
+a new session with the given user.
+
