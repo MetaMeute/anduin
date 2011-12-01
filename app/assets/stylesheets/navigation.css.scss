@@ -7,12 +7,12 @@ div#navigation {
   white-space: nowrap;
   background:rgba(79,108,133,0.88);
 
-  ul /* Primary and secondary links */ {
+  ul /* Primary level items */ {
     margin: 0;
     padding: 0;
     text-align: left;
     
-    li /* A simple method to get navigation links to appear in one line. */ {
+    li {
       float: left;
       padding: .75ex 1em;
       list-style-image: none;
@@ -26,7 +26,7 @@ div#navigation {
         text-decoration: none;
       }
 
-      ul {
+      ul /* Secondary level items */ {
         display: none;
 
         li {
