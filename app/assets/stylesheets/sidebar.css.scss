@@ -1,3 +1,5 @@
+@import "colours";
+
 div#sidebar-left, div#sidebar-right {
   width:180px;
 
@@ -7,14 +9,14 @@ div#sidebar-left, div#sidebar-right {
   }
 
   h3.menu {
-  border-top: 2px solid #666666;
-    color : #336633;
+    border-top: 2px solid $secondary_a;
+    color : $secondary_b;
     margin-top : 5px;
     margin-bottom : 0px;
-    border-bottom : 1px solid #666666;
+    border-bottom: 1px solid $secondary_a;
   }
   ul.menu {
-  border-bottom: 2px solid #666666;
+    border-bottom: 2px solid $secondary_a;
     margin-top : 7px;
     margin-bottom : 7px;
     padding-left : .5em;
@@ -29,7 +31,7 @@ div#sidebar-left, div#sidebar-right {
     }
     li a:hover {
       border-radius: 1ex;
-      background:rgba(118,158,90,0.62);
+      background: rgba($secondary_b, 0.62);
       text-decoration : none;
     }
   }
