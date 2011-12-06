@@ -23,6 +23,13 @@ gem 'gollum'
 gem 'rdiscount'
 gem 'rdoc', "< 3.10"
 
+#this needs to be in here for file assets to work. somehow it’s not enough to have it as dependency of fassets_core :/
+gem 'paperclip'
+gem 'fancybox-rails'
+
+# for now the git version of fassets core should be used, since it’s under heavy development
+gem 'fassets_core', :git => "git://github.com/fassets/fassets_core.git"
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'cucumber-rails'

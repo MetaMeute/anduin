@@ -10,7 +10,46 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111001235522) do
+ActiveRecord::Schema.define(:version => 20111206170710) do
+
+  create_table "assets", :force => true do |t|
+    t.string   "name"
+    t.boolean  "public"
+    t.integer  "content_id"
+    t.string   "content_type"
+    t.integer  "user_id"
+    t.integer  "classifications_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "catalogs", :force => true do |t|
+    t.string "title"
+    t.string "permalink"
+    t.text   "info"
+  end
+
+  create_table "classifications", :force => true do |t|
+    t.integer "catalog_id"
+    t.integer "asset_id"
+  end
+
+  create_table "facets", :force => true do |t|
+    t.string  "caption"
+    t.string  "color"
+    t.string  "order"
+    t.integer "catalog_id"
+    t.string  "label_order"
+  end
+
+  create_table "file_assets", :force => true do |t|
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.integer  "file_width"
+    t.integer  "file_height"
+    t.datetime "file_updated_at"
+  end
 
   create_table "git_configs", :force => true do |t|
     t.string   "name"
@@ -18,6 +57,30 @@ ActiveRecord::Schema.define(:version => 20111001235522) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "labelings", :force => true do |t|
+    t.integer "classification_id"
+    t.integer "label_id"
+  end
+
+  create_table "labels", :force => true do |t|
+    t.string  "caption"
+    t.integer "facet_id"
+    t.integer "position"
+    t.integer "value"
+  end
+
+  create_table "tray_positions", :force => true do |t|
+    t.integer "user_id"
+    t.integer "position"
+    t.integer "asset_id"
+    t.string  "clipboard_type"
+    t.integer "clipboard_id"
+  end
+
+  create_table "urls", :force => true do |t|
+    t.string "url"
   end
 
   create_table "users", :force => true do |t|
