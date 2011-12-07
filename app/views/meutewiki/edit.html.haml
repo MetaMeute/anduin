@@ -7,6 +7,7 @@
     = menu_item t(:show, :scope => :meutewiki), meutewiki_show_page_path(@wiki_page.name)
     = menu_item t(:edit, :scope => :meutewiki), meutewiki_edit_page_path(@wiki_page.name)
     = menu_item t(:history, :scope => :meutewiki), meutewiki_page_history_path(@wiki_page.name)
+    = menu_item t(:upload_file, :scope => :meteuwiki), new_file_asset_path
 
 = form_for :wiki_page,
     :url => { :controller => :meutewiki, :action => "update", :name => @wiki_page.name },

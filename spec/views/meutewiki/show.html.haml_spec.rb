@@ -21,4 +21,10 @@ describe "meutewiki/show.html.haml" do
     pending "seems menu_item-method has to be implemented as using a stub for testing"
     rendered.should have_css("a", :href => meutewiki_page_history_path('TestPage'))
   end
+
+  it "should render a link to the file upload page" do
+    render
+    pending "seems menu_item-method has to be implemented as using a stub for testing"
+    rendered.should have_css("a", :href => new_file_asset_path)
+  end
 end
