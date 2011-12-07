@@ -13,3 +13,9 @@ end
 Then /^I should see "([^"]*)"$/ do |text|
   page.should have_text(text)
 end
+
+Then /^I should see a form with fields:$/ do |table|
+  table.rows.each do |row|
+    page.should have_css("form", :text => row.first)
+  end
+end
