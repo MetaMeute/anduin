@@ -7,7 +7,6 @@ Feature: file upload in wiki
     Given I am logged in as "Robert"
     And a catalog named "Wiki Files"
 
-  @wip
   Scenario: visit the upload page
     Given I am on the wiki front page
     When I follow "Upload File"
