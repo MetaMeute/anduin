@@ -1,4 +1,4 @@
-div#sidebar-left, div#sidebar-right {
+div#sidebar-left, div#sidebar-right, div#sidebar.fassets_core {
   width:180px;
 
   #meutelogo > img {
@@ -38,7 +38,15 @@ div#sidebar-left {
   float:left;
   margin-left:.5em;
 }
-div#sidebar-right {
+div#sidebar-right, div#sidebar.fassets_core {
   float:right;
   margin-right:.5em;
+}
+
+div#sidebar.fassets_core {
+  .collapsiblePanelTitle {
+    h2.title {
+      font-size: 1em;
+    }
+  }
 }
