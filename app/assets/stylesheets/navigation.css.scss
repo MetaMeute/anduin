@@ -1,3 +1,5 @@
+@import "colours";
+
 div#navigation {
   position: fixed; top: 0;
   width: 100%;
@@ -5,7 +7,7 @@ div#navigation {
   z-index: 2;
   font-size: 1em;
   white-space: nowrap;
-  background:rgba(79,108,133,0.88);
+  background:rgba($secondary_a, 0.64);
 
   ul /* Primary level items */ {
     margin: 0;
@@ -17,11 +19,11 @@ div#navigation {
       padding: .75ex 1em;
       list-style-image: none;
       list-style-type: none;
-      border: 2px solid rgba(102,153,170,0);
+      border: 2px solid rgba($secondary_a, 0);
       border-radius: 1.5ex;
       
       a {
-        color: #ffffff;
+        color: lighten($secondary_a, 64%);
         font-size: 110%;
         text-decoration: none;
       }
@@ -46,8 +48,8 @@ div#navigation {
     }
     
     li:hover {
-      border: 2px solid rgba(102,153,170,1); 
-      background: rgba(79,108,133,0.88);
+      border: 2px solid lighten($secondary_a, 23%);
+      background: rgba($secondary_a, 1);
 
       ul {
         display: block;

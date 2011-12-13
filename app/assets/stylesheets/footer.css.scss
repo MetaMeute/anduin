@@ -1,13 +1,15 @@
+@import "colours";
+
 div#footer
 {
   width:100%;
-  background:rgba(118,158,90,0.42);
+  background: rgba($secondary_b, 0.42);
   height:auto;
   margin:0;
   vertical-align:middle;
   z-index:2;
   overflow: visible;
-  color: #363;
+  color: $secondary_b;
   position:fixed; bottom:0;
   border:0px;
   border-bottom: 2px solid black;

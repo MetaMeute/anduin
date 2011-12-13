@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "colours";
+
 body.meutewiki {
   // Add the meutewiki class to your body tag
   // Then, place scoped styles here.
@@ -9,11 +11,11 @@ body.meutewiki {
 
 form div#page_content.preview {
   border : solid 1px;
-  background : #efefef;
+  background : rgba($secondary_a, 0.1);
 }
 
 form div#page_content.preview > textarea {
-  background : #efefef;
+  background : rgba($secondary_a, 0.01);
   width : 100%;
 }
 
