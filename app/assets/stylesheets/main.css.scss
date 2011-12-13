@@ -1,7 +1,5 @@
 body {
-  font-size: 80.0%, Serif;
-/*  font-family: Vollkorn; */
-  font-family: Linux Libertine, Helvetica, sans serif;
+  font-family: DroidSans-webfont, sans-serif;
   color:#1B354C;
   text-align: center;
   margin:0;
@@ -45,6 +43,7 @@ div#page {
   min-width:900px;
 }
 div#page_content {
+  font-size: 80.0%;
   margin-left:200px;
   margin-right:200px;
   padding-left:1em;
