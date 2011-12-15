@@ -19,3 +19,20 @@ Then /^I should see a form with fields:$/ do |table|
     page.should have_css("form", :text => row.first)
   end
 end
+
+When /^I fill in "([^"]*)" into "([^"]*)"$/ do |value, field|
+  fill_in field_to_id(field), :with => value
+end
+
+When /^I select "([^"]*)" from "([^"]*)"$/ do |value, field|
+  select value, :from => field_to_id(field)
+end
+
+When /^I upload the testfile "([^"]*)"$/ do |file_name|
+  attach_file 'fassets_core_file_asset_file', "#{File.join([Rails.root,"spec","fixtures",file_name])}"
+end
+
+When /^I submit the form$/ do
+  click_on :commit
+end
+
