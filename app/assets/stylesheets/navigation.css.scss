@@ -30,7 +30,7 @@ div#navigation {
       }
 
       ul /* Secondary level items */ {
-        display: none;
+        visibility: hidden;
 
         li {
           float: none;
@@ -62,7 +62,7 @@ div#navigation {
       background: rgba($secondary_a, 1);
 
       ul {
-        display: block;
+        visibility: visible;
       }
     }
   }
