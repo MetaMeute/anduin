@@ -32,3 +32,10 @@ thing in action.
 When running in development or test environment, signing in using any value as Nick and the password "secure!" should create
 a new session with the given user.
 
+### Submit your code ###
+
+Fork the project on github and start hacking. When you are done, submit a pull request.
+
+All feature branches in the main repository are likeliy to be rebased onto master from time to time. Make sure you know, what
+you are doing before merging those. You should expect breakage from time to time ;)
+
