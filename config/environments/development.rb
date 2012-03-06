@@ -38,7 +38,7 @@ Anduin::Application.configure do
 
       private
       def wardenStrategy
-        env['warden'].authenticate(:fake)
+        request.env['warden'].authenticate(:fake)
       end
     end
   end
