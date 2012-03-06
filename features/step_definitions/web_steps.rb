@@ -31,5 +31,5 @@ When /^I go the home page$/ do
 end
 
 Then /^I should be on the account page$/ do
-  current_path.should == my_account_path
+  current_path.should =~ /^\/users\/[0-9]+\/edit$/
 end
