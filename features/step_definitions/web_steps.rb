@@ -6,6 +6,10 @@ Given /^I am on the home page$/ do
   visit '/'
 end
 
+Given /^I am on the login page$/ do
+  visit '/users/sign_in'
+end
+
 Then /^I should be on the login page$/ do
   current_path.should == new_user_session_path
 end
