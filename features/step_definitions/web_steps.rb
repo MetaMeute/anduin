@@ -29,7 +29,7 @@ When /^I select "([^"]*)" from "([^"]*)"$/ do |value, field|
 end
 
 When /^I upload the testfile "([^"]*)"$/ do |file_name|
-  attach_file 'fassets_core_file_asset_file', "#{File.join([Rails.root,"spec","fixtures",file_name])}"
+  attach_file 'file_asset_file', "#{File.join([Rails.root,"spec","fixtures",file_name])}"
 end
 
 When /^I submit the form$/ do
