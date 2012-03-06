@@ -24,8 +24,11 @@ gem 'rdiscount'
 gem 'rdoc', "< 3.10"
 
 group :development, :test do
+  gem 'guard-rspec'
   gem 'rspec-rails'
+  gem 'guard-cucumber'
   gem 'cucumber-rails'
   gem 'database_cleaner'
+  gem 'guard-spork'
   gem 'spork'
 end
