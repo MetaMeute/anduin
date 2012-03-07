@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     }
     ldap.add(:dn => dn, :attributes => attr)
     if ldap.get_operation_result.code != 0 then
-      puts ldap.get_operation_result.message
+      logger.fatal "LDAP error: #{ldap.get_operation_result.message}"
       flash[:error] = ldap.get_operation_result.message
       redirect_to users_sign_up_path
       return
