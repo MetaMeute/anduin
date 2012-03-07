@@ -12,3 +12,15 @@ Given /^I am logged in as "([^"]*)"$/ do |nick|
   click_button "Sign in"
 end
 
+Given /^there is no user named "([^"]*)"$/ do |nick|
+  ldap_config = YAML.load(ERB.new(File.read(::Devise.ldap_config || "#{Rails.root}/config/ldap.yml")).result)[Rails.env]
+  ldap = Net::LDAP.new
+  ldap.host = ldap_config["host"]
+  ldap.auth ldap_config["admin_user"], ldap_config["admin_password"]
+  if !ldap.bind then
+    throw "Could not bind to ldap"
+  end
+  base_dn = ldap_config["base"]
+  ldap.delete(:dn => "cn=#{nick},#{base_dn}")
+end
+
