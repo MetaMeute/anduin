@@ -6,7 +6,7 @@ Feature: Password management
   Scenario: forgot password page
     Given I am not logged in
     And I am on the login page
-    When I follow "Forgot Password"
+    When I follow "Forgot your password?"
     Then I should be on the forgot password page
 
   Scenario: request password reset
