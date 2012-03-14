@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+require 'ntlm_hashes.rb'
 
 class UsersController < ApplicationController
   def edit
@@ -24,11 +25,20 @@ class UsersController < ApplicationController
     dn = "cn=#{params[:user][:nick]},#{ldap_config["base"]}"
     salt = OpenSSL::Random.random_bytes 5
     ssha_pw = "{SSHA}"+Base64.encode64(Digest::SHA1.digest(params[:user][:password]+salt)+salt).chomp!
+
+    # this is a little insecure, because if the ldap db is lost, crackers might attack the passwords
+    # it would be nice to change this to a more secure algorithm, once the VPN is configured to support it
+    nt_pw = NTLM::Hashes.nt_hash params[:user][:password]
+    lm_pw = NTLM::Hashes.lm_hash params[:user][:password]
     attr = {
+      :objectclass => ["top", "inetOrgPerson", "sambaSamAccount"],
       :cn => params[:user][:nick],
-      :objectclass => ["top", "inetOrgPerson"],
       :sn => params[:user][:nick],
-      :userPassword => ssha_pw
+      :uid => params[:user][:nick],
+      :sambaSID => params[:user][:nick],
+      :userPassword => ssha_pw,
+      :sambaNTPassword => nt_pw,
+      :sambaLMPassword => lm_pw
     }
     ldap.add(:dn => dn, :attributes => attr)
     if ldap.get_operation_result.code != 0 then
