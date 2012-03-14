@@ -18,6 +18,10 @@ Then /^I should be on the login page$/ do
   current_path.should == new_user_session_path
 end
 
+Given /^I am on the forgot password page$/ do
+  visit forgot_password_path
+end
+
 Then /^I should see the "([^"]*)" image$/ do |alt_text|
   page.should have_css('img', :alt => alt_text)
 end
@@ -56,5 +60,9 @@ end
 
 Then /^I should be on the sign in page$/ do
   current_path.should == '/users/sign_in'
+end
+
+Then /^I should be on the forgot password page$/ do
+  current_path.should == forgot_password_path
 end
 
