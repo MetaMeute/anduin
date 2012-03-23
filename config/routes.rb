@@ -1,9 +1,10 @@
 Anduin::Application.routes.draw do
   get "users/sign_up"
   post "users/register"
-  get "users/:id/edit", :controller => :users, :action => :edit, :as => :edit_user
 
   devise_for :users
+
+  get "users/:id/edit", :controller => :users, :action => :edit, :as => :edit_user
 
   namespace :meutewiki do
     get '/', :action => 'front_page'
