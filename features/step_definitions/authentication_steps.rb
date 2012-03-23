@@ -13,11 +13,15 @@ Given /^I am logged in as "([^"]*)"$/ do |nick|
 end
 
 Given /^there is no user named "([^"]*)"$/ do |nick|
+  u = User.find_by_nick(nick)
+  u.destroy unless u.nil?
+
   ldap = init_ldap
   ldap.delete(:dn => "cn=#{nick},#{base_dn}")
 end
 
 Given /^a user "([^"]*)"$/ do |nick|
+  step "there is no user named \"#{nick}\""
   ldap = init_ldap
 
   attributes = {
