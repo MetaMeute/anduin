@@ -19,3 +19,11 @@ Feature: Password management
     Then an e-mail with password reset request link should be sent to "test@example.com"
     And I should be on the login page
 
+  Scenario: reset password
+    Given I request a password reset
+    When I click the reset link in the email
+    And I fill in "New password" with "secure"
+    And I fill in "Confirm new password" with "secure"
+    And I click "Change my password"
+    Then I should be logged in
+

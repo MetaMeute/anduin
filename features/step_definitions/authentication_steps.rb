@@ -56,3 +56,22 @@ Then /^an e\-mail with password reset request link should be sent to "([^"]*)"$/
   current_email.body.should include("Someone has requested a link to change your password, and you can do this through the link below.")
 end
 
+Given /^I request a password reset$/ do
+  step 'I am not logged in'
+  step 'a user "Robert"'
+  step 'user "Robert" has e-mail set to "test@example.com"'
+  step 'I am on the forgot password page'
+  fill_in "Email", :with => "test@example.com"
+  click_button "Send me reset password instruction"
+
+  open_email("test@example.com")
+  current_email.body.should include("Someone has requested a link to change your password, and you can do this through the link below.")
+end
+
+When /^I click the reset link in the email$/ do
+  click_first_link_in_email
+end
+
+Then /^I should be logged in$/ do
+  step 'I should see "Robert"'
+end
