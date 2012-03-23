@@ -32,3 +32,7 @@ group :development, :test do
   gem 'guard-spork'
   gem 'spork'
 end
+
+group :test do
+  gem 'email_spec'
+end
