@@ -19,7 +19,7 @@ Then /^I should be on the login page$/ do
 end
 
 Given /^I am on the forgot password page$/ do
-  visit forgot_password_path
+  visit new_user_password_path
 end
 
 Then /^I should see the "([^"]*)" image$/ do |alt_text|
@@ -63,6 +63,6 @@ Then /^I should be on the sign in page$/ do
 end
 
 Then /^I should be on the forgot password page$/ do
-  current_path.should == forgot_password_path
+  current_path.should == new_user_password_path
 end
 
