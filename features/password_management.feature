@@ -11,9 +11,11 @@ Feature: Password management
 
   Scenario: request password reset
     Given I am not logged in
+    And a user "Robert"
+    And user "Robert" has e-mail set to "test@example.com"
     And I am on the forgot password page
-    When I fill in "E-Mail" with "test@example.com"
-    And I click "Request Password Reset"
-    Then an e-mail with password reset request link should be sent
+    When I fill in "Email" with "test@example.com"
+    And I click "Send me reset password instruction"
+    Then an e-mail with password reset request link should be sent to "test@example.com"
     And I should be on the login page
 
