@@ -12,15 +12,8 @@ class UsersController < ApplicationController
   def register
     return unless check_password
 
-    ldap_config = YAML.load(ERB.new(File.read(::Devise.ldap_config || "#{Rails.root}/config/ldap.yml")).result)[Rails.env]
-    ldap = Net::LDAP.new
-    ldap.host = ldap_config["host"]
-    ldap.auth ldap_config["admin_user"], ldap_config["admin_password"]
-    if !ldap.bind then
-      flash[:error] = 'Couldn’t connect to LDAP Server'
-      redirect_to users_sign_up_path
-      return
-    end
+    ldap = bind_ldap
+    return if ldap.nil?
 
     dn = "cn=#{params[:user][:nick]},#{ldap_config["base"]}"
     attr = {
@@ -48,15 +41,8 @@ class UsersController < ApplicationController
     user = User.find_by_reset_password_token params[:user][:reset_password_token]
     return unless user.reset_password! params[:user][:reset_password_token], params[:user][:password]
 
-    ldap_config = YAML.load(ERB.new(File.read(::Devise.ldap_config || "#{Rails.root}/config/ldap.yml")).result)[Rails.env]
-    ldap = Net::LDAP.new
-    ldap.host = ldap_config["host"]
-    ldap.auth ldap_config["admin_user"], ldap_config["admin_password"]
-    if !ldap.bind then
-      flash[:error] = 'Couldn’t connect to LDAP Server'
-      redirect_to users_sign_up_path
-      return
-    end
+    ldap = bind_ldap
+    return if ldap.nil?
 
     dn = "cn=#{user.nick},#{ldap_config["base"]}"
     pw_hashes.each do |key,value|
@@ -104,5 +90,18 @@ class UsersController < ApplicationController
       :sambaNTPassword => nt_pw,
       :sambaLMPassword => lm_pw
     }
+  end
+
+  def bind_ldap
+    ldap_config = YAML.load(ERB.new(File.read(::Devise.ldap_config || "#{Rails.root}/config/ldap.yml")).result)[Rails.env]
+    ldap = Net::LDAP.new
+    ldap.host = ldap_config["host"]
+    ldap.auth ldap_config["admin_user"], ldap_config["admin_password"]
+    if !ldap.bind then
+      flash[:error] = 'Couldn’t connect to LDAP Server'
+      redirect_to users_sign_up_path
+      return
+    end
+    ldap
   end
 end
