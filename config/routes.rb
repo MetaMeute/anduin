@@ -1,6 +1,7 @@
 Anduin::Application.routes.draw do
   get "users/sign_up"
   post "users/register"
+  put "users/password", :controller => :users, :action => :reset_password
 
   devise_for :users
 

@@ -12,7 +12,7 @@ describe UsersController do
     end
   end
 
-  describe "POST 'register'" do
+  describe "authentication" do
     describe "information stored in LDAP" do
       let(:obj_classes) do
         ["top", "inetOrgPerson", "sambaSamAccount"]
@@ -100,6 +100,44 @@ describe UsersController do
           end
         end
       end
+
+      describe "reset password" do
+        before(:each) do
+          u = User.find_by_nick(nick)
+          u.send_reset_password_instructions
+          put 'reset_password', { "user" => {
+                                    "reset_password_token" => u.reset_password_token,
+                                    "password" => "test4321",
+                                    "password_confirmation" => "test4321"
+                                  }
+                                }
+        end
+
+        it "should reset userPassword" do
+          f = Net::LDAP::Filter.eq("cn", nick)
+          ldap.search( :base => base_dn, :filter => f, :attributes => ['userPassword'] ) do |entry|
+            entry["userPassword"].should_not be_empty
+            # TODO: may be, we should check it actually changed; how?
+          end
+        end
+
+        it "should reset sambaLMPassword" do
+          f = Net::LDAP::Filter.eq("cn", nick)
+          ldap.search( :base => base_dn, :filter => f, :attributes => ['sambaLMPassword'] ) do |entry|
+            entry["sambaLMPassword"].should_not be_empty
+            entry["sambaLMPassword"].first.should == "C959BEC57C2EF53BC2265B23734EDAC"
+          end
+        end
+
+        it "should reset sambaNTPassword" do
+          f = Net::LDAP::Filter.eq("cn", nick)
+          ldap.search( :base => base_dn, :filter => f, :attributes => ['sambaNTPassword'] ) do |entry|
+            entry["sambaNTPassword"].should_not be_empty
+            entry["sambaNTPassword"].first.should == "9F699D92689E51641866F45D71553987"
+          end
+        end
+      end
     end
   end
 end
+
