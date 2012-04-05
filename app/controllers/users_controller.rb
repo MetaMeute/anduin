@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     ldap = bind_ldap
     return if ldap.nil?
 
-    dn = "cn=#{params[:user][:nick]},#{ldap_config["base"]}"
+    dn = "cn=#{params[:user][:nick]},#{ldap_config("base")}"
     attr = {
       :objectclass => ["top", "inetOrgPerson", "sambaSamAccount"],
       :cn => params[:user][:nick],
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     ldap = bind_ldap
     return if ldap.nil?
 
-    dn = "cn=#{user.nick},#{ldap_config["base"]}"
+    dn = "cn=#{user.nick},#{ldap_config("base")}"
     pw_hashes.each do |key,value|
       ldap.replace_attribute( dn, key, value )
     end
@@ -93,15 +93,19 @@ class UsersController < ApplicationController
   end
 
   def bind_ldap
-    ldap_config = YAML.load(ERB.new(File.read(::Devise.ldap_config || "#{Rails.root}/config/ldap.yml")).result)[Rails.env]
     ldap = Net::LDAP.new
-    ldap.host = ldap_config["host"]
-    ldap.auth ldap_config["admin_user"], ldap_config["admin_password"]
+    ldap.host = ldap_config("host")
+    ldap.auth ldap_config("admin_user"), ldap_config("admin_password")
     if !ldap.bind then
       flash[:error] = 'Couldn’t connect to LDAP Server'
       redirect_to users_sign_up_path
       return
     end
     ldap
+  end
+
+  def ldap_config key
+    @_ldap_c = YAML.load(ERB.new(File.read(::Devise.ldap_config || "#{Rails.root}/config/ldap.yml")).result)[Rails.env] if @_ldap_c.nil?
+    @_ldap_c[key]
   end
 end
