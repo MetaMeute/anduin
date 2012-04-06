@@ -114,6 +114,17 @@ describe UsersController do
                                 }
         end
 
+        it "should provide an useful error if no password token is present" do
+          put 'reset_password', { "user" => {
+                                    "reset_password_token" => "none!",
+                                    "password" => "t",
+                                    "password_confirmation" => "t"
+                                  } 
+                                }
+          response.should redirect_to(new_user_password_path)
+          flash[:error].should == "Unable to reset password, please follow the instructions in the mail."
+        end
+
         it "should reset userPassword" do
           f = Net::LDAP::Filter.eq("cn", nick)
           ldap.search( :base => base_dn, :filter => f, :attributes => ['userPassword'] ) do |entry|

@@ -32,6 +32,11 @@ class UsersController < ApplicationController
   def reset_password
     return unless check_password
     @user = User.find_by_reset_password_token params[:user][:reset_password_token]
+    if @user.nil?
+      flash[:error] = "Unable to reset password, please follow the instructions in the mail."
+      redirect_to new_user_password_path
+      return
+    end
     return unless @user.reset_password! params[:user][:reset_password_token], params[:user][:password]
 
     ldap = bind_ldap
