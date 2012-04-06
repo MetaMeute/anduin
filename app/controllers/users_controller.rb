@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+# encoding: UTF-8
 require 'ntlm_hashes.rb'
 
 class UsersController < ApplicationController

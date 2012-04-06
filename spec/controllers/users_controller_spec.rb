@@ -102,6 +102,21 @@ describe UsersController do
         end
       end
 
+      describe "very secure passwords" do
+        it "should not fail when entering passwords with unicode characters" do
+          p = "8?(hts[e`D2ZPHüß"
+          u = User.find_by_nick(nick)
+          u.send_reset_password_instructions
+          put 'reset_password', { "user" => {
+                                    "reset_password_token" => u.reset_password_token,
+                                    "password" => p,
+                                    "password_confirmation" => p
+                                  }
+                                }
+          response.should redirect_to edit_user_path(u)
+        end
+      end
+
       describe "reset password" do
         before(:each) do
           u = User.find_by_nick(nick)

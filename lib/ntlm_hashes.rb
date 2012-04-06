@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # Code for the hash functions mostly copied from the metasploid project
 # from file lib/rex/proto/ntlm/crypt.rb
 #
@@ -11,7 +12,7 @@ module NTLM
     end
 
     def self.nt_hash password
-      OpenSSL::Digest::MD4.hexdigest(password.encode("utf-16le", "utf-8")).upcase
+      OpenSSL::Digest::MD4.hexdigest(encoded_password(password)).upcase
     end
 
     private
@@ -42,6 +43,14 @@ module NTLM
       keys.map do |k|
         dec.key = k
         dec.encrypt.update(plain)
+      end
+    end
+
+    def self.encoded_password pw
+      if pw.respond_to?"encode"
+        pw.encode("utf-16le", "utf-8")
+      else
+        Iconv.iconv("UTF-16le", "UTF-8", pw).join
       end
     end
   end
