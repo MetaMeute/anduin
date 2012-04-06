@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'spec_helper'
 
 describe UsersController do
@@ -134,6 +135,52 @@ describe UsersController do
           ldap.search( :base => base_dn, :filter => f, :attributes => ['sambaNTPassword'] ) do |entry|
             entry["sambaNTPassword"].should_not be_empty
             entry["sambaNTPassword"].first.should == "9F699D92689E51641866F45D71553987"
+          end
+        end
+      end
+
+      describe "with missing ldap attributes" do
+        let(:expected) do
+          {
+            "objectclass" => ["top", "inetOrgPerson", "sambaSamAccount"],
+            :cn => [nick],
+            :sn => [nick],
+            :uid => [nick],
+            :sambaSID => [nick],
+            "sambaLMPassword" => ["C959BEC57C2EF53BC2265B23734EDAC"],
+            "sambaNTPassword" => ["9F699D92689E51641866F45D71553987"]
+          }
+        end
+
+        after(:each) do
+          u = User.find_by_nick(nick)
+          u.send_reset_password_instructions
+          put 'reset_password', { "user" => {
+                                    "reset_password_token" => u.reset_password_token,
+                                    "password" => "test4321",
+                                    "password_confirmation" => "test4321"
+                                  }
+                                }
+
+          f = Net::LDAP::Filter.eq("cn", nick)
+          ldap.search( :base => base_dn, :filter => f ) do |entry|
+            expected.each { |key, value| entry[key].should == value }
+            entry["userPassword"].should_not be_empty
+          end
+        end
+
+        it "should create sambaSamAccounts" do
+          dn = "cn=#{nick},#{base_dn}"
+          attr = {
+            "objectclass" => ["top", "inetOrgPerson"],
+            "cn" => nick,
+            "sn" => nick,
+            "userPassword" => ""
+          }
+          ldap.delete(:dn => dn)
+          ldap.add(:dn => dn, :attributes => attr)
+          if ldap.get_operation_result.code != 0 then
+            throw "LDAP error: #{ldap.get_operation_result.message}"
           end
         end
       end

@@ -16,15 +16,8 @@ class UsersController < ApplicationController
     return if ldap.nil?
 
     dn = "cn=#{params[:user][:nick]},#{ldap_config("base")}"
-    attr = {
-      :objectclass => ["top", "inetOrgPerson", "sambaSamAccount"],
-      :cn => params[:user][:nick],
-      :sn => params[:user][:nick],
-      :uid => params[:user][:nick],
-      :sambaSID => params[:user][:nick]
-    }
-    attr.merge! pw_hashes
-    ldap.add(:dn => dn, :attributes => attr)
+    @user = User.new(:nick => params[:user][:nick])
+    ldap.add(:dn => dn, :attributes => ldap_hash)
     if ldap.get_operation_result.code != 0 then
       logger.fatal "LDAP error: #{ldap.get_operation_result.message}"
       flash[:error] = ldap.get_operation_result.message
@@ -38,16 +31,15 @@ class UsersController < ApplicationController
 
   def reset_password
     return unless check_password
-    user = User.find_by_reset_password_token params[:user][:reset_password_token]
-    return unless user.reset_password! params[:user][:reset_password_token], params[:user][:password]
+    @user = User.find_by_reset_password_token params[:user][:reset_password_token]
+    return unless @user.reset_password! params[:user][:reset_password_token], params[:user][:password]
 
     ldap = bind_ldap
     return if ldap.nil?
 
-    dn = "cn=#{user.nick},#{ldap_config("base")}"
-    pw_hashes.each do |key,value|
-      ldap.replace_attribute( dn, key, value )
-    end
+    dn = "cn=#{@user.nick},#{ldap_config("base")}"
+    ldap.delete(:dn => dn)
+    ldap.add(:dn => dn, :attributes => ldap_hash)
 
     if ldap.get_operation_result.code != 0 then
       logger.fatal "LDAP error: #{ldap.get_operation_result.message}"
@@ -57,8 +49,8 @@ class UsersController < ApplicationController
     end
 
     flash[:notice] = 'Password updated, welcome back.'
-    sign_in(:user, user)
-    redirect_to edit_user_path(user)
+    sign_in(:user, @user)
+    redirect_to edit_user_path(@user)
   end
 
   private
@@ -77,7 +69,7 @@ class UsersController < ApplicationController
     return true
   end
 
-  def pw_hashes
+  def ldap_hash
     salt = OpenSSL::Random.random_bytes 5
     ssha_pw = "{SSHA}"+Base64.encode64(Digest::SHA1.digest(params[:user][:password]+salt)+salt).chomp!
 
@@ -86,6 +78,11 @@ class UsersController < ApplicationController
     nt_pw = NTLM::Hashes.nt_hash params[:user][:password]
     lm_pw = NTLM::Hashes.lm_hash params[:user][:password]
     {
+      :objectclass => ["top", "inetOrgPerson", "sambaSamAccount"],
+      :cn => @user.nick,
+      :sn => @user.nick,
+      :uid => @user.nick,
+      :sambaSID => @user.nick,
       :userPassword => ssha_pw,
       :sambaNTPassword => nt_pw,
       :sambaLMPassword => lm_pw
