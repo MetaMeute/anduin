@@ -75,13 +75,19 @@ class UsersController < ApplicationController
   end
 
   def ldap_hash
+    # FIXME: why do I have to use force_encoding all over the place? :/
+    pass = params[:user][:password]
+    pass.force_encoding('utf-8')
     salt = OpenSSL::Random.random_bytes 5
-    ssha_pw = "{SSHA}"+Base64.encode64(Digest::SHA1.digest(params[:user][:password]+salt)+salt).chomp!
+    salt.force_encoding('utf-8')
+    h = Digest::SHA1.digest("#{pass}#{salt}")
+    h.force_encoding('utf-8')
+    ssha_pw = "{SSHA}"+Base64.encode64(h+salt).chomp!
 
     # this is a little insecure, because if the ldap db is lost, crackers might attack the passwords
     # it would be nice to change this to a more secure algorithm, once the VPN is configured to support it
-    nt_pw = NTLM::Hashes.nt_hash params[:user][:password]
-    lm_pw = NTLM::Hashes.lm_hash params[:user][:password]
+    nt_pw = NTLM::Hashes.nt_hash pass
+    lm_pw = NTLM::Hashes.lm_hash pass
     {
       :objectclass => ["top", "inetOrgPerson", "sambaSamAccount"],
       :cn => @user.nick,
