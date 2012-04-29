@@ -172,7 +172,7 @@ describe UsersController do
                                     "reset_password_token" => "none!",
                                     "password" => "t",
                                     "password_confirmation" => "t"
-                                  } 
+                                  }
                                 }
           response.should redirect_to(new_user_password_path)
           flash[:error].should == "Unable to reset password, please follow the instructions in the mail."
