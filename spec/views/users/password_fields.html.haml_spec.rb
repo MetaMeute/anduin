@@ -6,8 +6,8 @@ describe "users/edit.html.haml" do
       u = mock_model(User, :email => "")
       assign :user, u
       render
-      rendered.should have_css("form > label", :text => "Email")
-      rendered.should have_css("form > input#user_email")
+      rendered.should have_css("form label", :text => "Email")
+      rendered.should have_css("form input#user_email")
     end
   end
 end
