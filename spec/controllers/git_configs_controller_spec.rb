@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GitConfigController do
+describe GitConfigsController do
 
   before(:each) do
     request.env['HTTP_ACCEPT_LANGUAGE'] = "de, en"

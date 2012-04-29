@@ -1,4 +1,4 @@
-class GitConfigController < ApplicationController
+class GitConfigsController < ApplicationController
   respond_to :html
 
   before_filter :find_git_config, :only => [:edit, :show, :update]
