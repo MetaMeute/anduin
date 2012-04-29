@@ -1,0 +1,4 @@
+#page_content
+  = form_for @user do |f|
+    = render :partial => 'password_fields', :locals => { :f => f }
+    = f.submit
