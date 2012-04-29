@@ -6,6 +6,16 @@ describe UsersController do
     request.env['HTTP_ACCEPT_LANGUAGE'] = "de, en"
   end
 
+  describe "GET 'edit'" do
+    fixtures :users
+
+    it "should assign a user" do
+      user = User.find 1
+      get 'edit', { :id => user.id }
+      assigns(:user).should == user
+    end
+  end
+
   describe "GET 'sign_up'" do
     it "should be successful" do
       get 'sign_up'

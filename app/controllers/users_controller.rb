@@ -3,6 +3,7 @@ require 'ntlm_hashes.rb'
 
 class UsersController < ApplicationController
   def edit
+    @user = User.find params[:id]
   end
 
   def sign_up
