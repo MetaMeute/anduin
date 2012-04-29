@@ -5,8 +5,6 @@ Anduin::Application.routes.draw do
 
   devise_for :users
 
-  get "users/:id/edit", :controller => :users, :action => :edit, :as => :edit_user
-
   namespace :meutewiki do
     get '/', :action => 'front_page'
     get 'index'
@@ -17,6 +15,7 @@ Anduin::Application.routes.draw do
   end
 
   resources :git_config
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
