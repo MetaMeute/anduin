@@ -23,6 +23,34 @@ describe UsersController do
     end
   end
 
+  describe "PUT 'update'" do
+    it "should assign a user" do
+      user = User.find 1
+      @controller.stub!(:current_user) { user }
+      put 'update', { :id => user.id }
+      assigns(:user).should == user
+    end
+
+    it "should update the email attribute of user" do
+      user = User.find 1
+      test_email = 'test@example.com'
+      user.email.should_not == test_email
+      @controller.stub!(:current_user) { user }
+      put 'update', { :id => user.id, :user => { :email => test_email } }
+      User.find(1).email.should == test_email
+    end
+
+    it "should not update the attributes of another user" do
+      user = User.find 1
+      test_email = 'test@example.com'
+      user.email.should_not == test_email
+      @controller.stub!(:current_user) { nil }
+      put 'update', { :id => user.id, :user => { :email => test_email } }
+      response.should be_forbidden
+      User.find(1).email.should_not == test_email
+    end
+  end
+
   describe "authentication" do
     describe "information stored in LDAP" do
       let(:obj_classes) do

@@ -2,8 +2,20 @@
 require 'ntlm_hashes.rb'
 
 class UsersController < ApplicationController
+
+  before_filter :find_user, :only => [:edit, :update]
+
   def edit
-    @user = User.find params[:id]
+  end
+
+  def update
+    @user.update_attributes params[:user]
+    if @user.save!
+      flash[:notice] = t 'Account updated'
+    end
+    respond_to do |format|
+      format.html { redirect_to edit_user_path(@user) }
+    end
   end
 
   def sign_up
@@ -60,6 +72,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def find_user
+    @user = User.find params[:id]
+  end
 
   def check_password
     if params[:user][:password].empty? then
