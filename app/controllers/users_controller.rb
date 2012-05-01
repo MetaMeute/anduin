@@ -2,8 +2,7 @@
 require 'ntlm_hashes.rb'
 
 class UsersController < ApplicationController
-
-  before_filter :find_user, :only => [:edit, :update]
+  load_and_authorize_resource
 
   def edit
   end
@@ -71,11 +70,11 @@ class UsersController < ApplicationController
     redirect_to edit_user_path(@user)
   end
 
-  private
-
-  def find_user
-    @user = User.find params[:id]
+  rescue_from CanCan::AccessDenied do |exception|
+    render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
   end
+
+  private
 
   def check_password
     if params[:user][:password].empty? then

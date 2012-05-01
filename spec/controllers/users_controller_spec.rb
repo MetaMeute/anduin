@@ -8,6 +8,9 @@ describe UsersController do
 
   describe "GET 'edit'" do
     fixtures :users
+    before(:each) do
+      @controller.stub!(:current_user) { User.find 1 }
+    end
 
     it "should assign a user" do
       user = User.find 1
@@ -73,6 +76,7 @@ describe UsersController do
       before(:each) do
         post 'register', { :user => {:nick => nick, :password => 'test1234', :password_confirmation => 'test1234'} }
         response.should redirect_to new_user_session_path
+        @controller.stub!(:current_user) { User.find_by_nick :nick }
       end
 
       after(:each) do
