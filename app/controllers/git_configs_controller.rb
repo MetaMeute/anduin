@@ -10,11 +10,6 @@ class GitConfigsController < ApplicationController
     render 'edit', { :git_config => @git_config }
   end
 
-  def create
-    c = GitConfig.create!(params[:git_config])
-    redirect_to(edit_git_config_path(c))
-  end
-
   def update
     @git_config.update_attributes(params[:git_config])
     @git_config.save!

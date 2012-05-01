@@ -20,18 +20,6 @@ describe GitConfigsController do
     end
   end
 
-  describe "POST 'create'" do
-    let(:params) do
-      {:git_config => {:name => "Testname", :email => "test@example.com"}}
-    end
-
-    it "should be successful" do
-      post 'create', params
-      response.should redirect_to(edit_git_config_path(1))
-      GitConfig.find(1).name.should == "Testname"
-    end
-  end
-
   describe "PUT 'update'" do
     let(:params) do
       c = GitConfig.create!
