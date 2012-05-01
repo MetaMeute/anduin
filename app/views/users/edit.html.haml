@@ -1,5 +1,6 @@
 #page_content
-  = form_for @user do |f|
-    = render :partial => 'password_fields', :locals => { :f => f }
-    #buttons
-      = f.submit
+  - unless @user.nil?
+    = form_for @user do |f|
+      = render :partial => 'password_fields', :locals => { :f => f }
+      #buttons
+        = f.submit
