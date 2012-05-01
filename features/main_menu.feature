@@ -9,12 +9,11 @@ Feature: Main Menu
     When I follow "Login"
     Then I should be on the login page
 
-  @wip
   Scenario: User menu
-    Given I am logged in as "Robert"
+    Given a user "Robert"
+    And I am logged in as "Robert"
     When I go the home page
     Then I should not see "Login"
     But I should see "Robert"
     When I follow "Robert"
     Then I should be on the account page
-
