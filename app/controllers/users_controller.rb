@@ -8,6 +8,14 @@ class UsersController < ApplicationController
   end
 
   def update
+    pw_fields_set = !params[:user].nil? && !params[:user][:password].nil? && !params[:user][:password_confirmation].nil?
+    unless !pw_fields_set || params[:user][:password].empty? && params[:user][:password_confirmation].empty?
+      # password should be changed
+      return unless check_password
+
+      return unless @user.reset_password! params[:user][:reset_password_token], params[:user][:password]
+      return unless update_ldap_password
+    end
     @user.update_attributes params[:user]
     if @user.save!
       flash[:notice] = t 'Account updated'
@@ -51,19 +59,7 @@ class UsersController < ApplicationController
     end
     return unless @user.reset_password! params[:user][:reset_password_token], params[:user][:password]
 
-    ldap = bind_ldap
-    return if ldap.nil?
-
-    dn = "cn=#{@user.nick},#{ldap_config("base")}"
-    ldap.delete(:dn => dn)
-    ldap.add(:dn => dn, :attributes => ldap_hash)
-
-    if ldap.get_operation_result.code != 0 then
-      logger.fatal "LDAP error: #{ldap.get_operation_result.message}"
-      flash[:error] = ldap.get_operation_result.message
-      redirect_to users_sign_up_path
-      return
-    end
+    return unless update_ldap_password
 
     flash[:notice] = 'Password updated, welcome back.'
     sign_in(:user, @user)
@@ -114,6 +110,23 @@ class UsersController < ApplicationController
       :sambaNTPassword => nt_pw,
       :sambaLMPassword => lm_pw
     }
+  end
+
+  def update_ldap_password
+    ldap = bind_ldap
+    return if ldap.nil?
+
+    dn = "cn=#{@user.nick},#{ldap_config("base")}"
+    ldap.delete(:dn => dn)
+    ldap.add(:dn => dn, :attributes => ldap_hash)
+
+    if ldap.get_operation_result.code != 0 then
+      logger.fatal "LDAP error: #{ldap.get_operation_result.message}"
+      flash[:error] = ldap.get_operation_result.message
+      redirect_to users_sign_up_path
+      return false
+    end
+    true
   end
 
   def bind_ldap

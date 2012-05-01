@@ -35,3 +35,12 @@ Feature: Password management
     And I click "Update User"
     Then I should see "Account updated"
 
+  Scenario: change password successfully
+    Given a user "Robert"
+    And I am logged in as "Robert"
+    When I follow "Robert"
+    And I fill in "New password" with "secure"
+    And I fill in "Confirm new password" with "secure"
+    And I click "Update User"
+    Then I should see "Account updated"
+    And my password should be "secure"

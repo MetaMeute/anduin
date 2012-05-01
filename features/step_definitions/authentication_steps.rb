@@ -75,3 +75,16 @@ end
 Then /^I should be logged in$/ do
   step 'I should see "Robert"'
 end
+
+Then /^my password should be "([^"]*)"$/ do |password|
+  ldap = init_ldap
+  filter = Net::LDAP::Filter.eq("cn", "Robert")
+  attrs = ["userPassword", "sambaLMPassword", "sambaNTPassword"]
+  ldap.search(:base => base_dn, :filter => filter, :attributes => attrs) do |entry|
+    entry["sambaLMPassword"].should_not be_empty
+    entry["sambaLMPassword"].first.should == NTLM::Hashes::lm_hash(password)
+    entry["sambaNTPassword"].should_not be_empty
+    entry["sambaNTPassword"].first.should == NTLM::Hashes::nt_hash(password)
+    entry["userPassword"].should_not be_empty
+  end
+end
