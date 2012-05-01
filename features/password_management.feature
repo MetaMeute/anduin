@@ -27,7 +27,6 @@ Feature: Password management
     And I click "Change my password"
     Then I should be logged in
 
-  @wip
   Scenario: set e-mail address
     Given a user "Robert"
     And I am logged in as "Robert"
