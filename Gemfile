@@ -18,6 +18,7 @@ gem 'simple-navigation'
 gem 'devise'
 gem 'devise_ldap_authenticatable'
 gem 'net-ldap'
+gem 'cancan'
 
 gem 'gollum'
 gem 'rdiscount'
