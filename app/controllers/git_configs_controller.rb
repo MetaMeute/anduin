@@ -1,7 +1,7 @@
 class GitConfigsController < ApplicationController
   respond_to :html
 
-  before_filter :find_git_config, :only => [:edit, :show, :update]
+  load_and_authorize_resource
 
   def edit
   end
@@ -19,9 +19,4 @@ class GitConfigsController < ApplicationController
     end
   end
 
-  private
-
-  def find_git_config
-    @git_config = GitConfig.find(params[:id])
-  end
 end

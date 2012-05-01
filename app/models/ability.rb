@@ -12,5 +12,8 @@ class Ability
 
     # each user can manage itself
     can [:read, :edit, :update, :reset_password], User, :id => user.id
+
+    # user can manage own git_config
+    can :manage, GitConfig, :id => user.git_config.id unless user.git_config.nil?
   end
 end

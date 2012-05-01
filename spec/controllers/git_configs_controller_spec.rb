@@ -8,8 +8,11 @@ describe GitConfigsController do
 
   describe "GET 'edit'" do
     let(:params) do
-      c = GitConfig.create!(:name => "Test Name", :email => "test@example.com")
-      {:id => c.id}
+      u = User.create!(:nick => 'Robert')
+      u.git_config.update_attributes!(:name => "Test Name", :email => "test@example.com")
+      u.save!
+      @controller.stub!(:current_user) { u }
+      {:id => u.git_config.id}
     end
 
     it "should be successful" do
@@ -22,8 +25,9 @@ describe GitConfigsController do
 
   describe "PUT 'update'" do
     let(:params) do
-      c = GitConfig.create!
-      {:id => c.id, :git_config => {:name => "Testname", :email => "test@example.com"}}
+      u = User.create!(:nick => 'Robert')
+      @controller.stub!(:current_user) { u }
+      {:id => u.git_config.id, :git_config => {:name => "Testname", :email => "test@example.com"}}
     end
 
     it "should be successful" do
