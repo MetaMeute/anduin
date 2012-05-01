@@ -1,7 +1,7 @@
 Anduin::Application.routes.draw do
   get "users/sign_up"
   post "users/register"
-  get "users/:id/edit", :controller => :users, :action => :edit, :as => :edit_user
+  put "users/password", :controller => :users, :action => :reset_password
 
   devise_for :users
 
@@ -14,7 +14,8 @@ Anduin::Application.routes.draw do
     get ':name/history', :action => 'history', :as => :page_history
   end
 
-  resources :git_config
+  resources :git_configs
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

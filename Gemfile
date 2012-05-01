@@ -18,6 +18,7 @@ gem 'simple-navigation'
 gem 'devise'
 gem 'devise_ldap_authenticatable'
 gem 'net-ldap'
+gem 'cancan'
 
 gem 'gollum'
 gem 'rdiscount'
@@ -31,4 +32,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'guard-spork'
   gem 'spork'
+end
+
+group :test do
+  gem 'email_spec'
 end
