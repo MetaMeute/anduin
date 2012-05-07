@@ -1,0 +1,4 @@
+en:
+  hint:
+    pw_email: "This e-mail address is used only to recover your password in case you don’t remember it. It’s *NOT* visible to other users."
+    pw_email_title: "E-Mail Address"
