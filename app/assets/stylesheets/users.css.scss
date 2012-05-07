@@ -1,0 +1,30 @@
+form.edit_user {
+  .text_input {
+    height: 35px;
+
+    label {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: right;
+      width: 20%;
+    }
+
+    input {
+      display: inline-block;
+      vertical-align: middle;
+      width: 30%;
+    }
+  }
+  #buttons {
+    width: 20%;
+    text-align: right;
+    vertical-align: bottom;
+    padding-top: 6px;
+
+    input {
+      margin-right: 0px;
+      margin-bottom: 0px;
+    }
+  }
+}
+
