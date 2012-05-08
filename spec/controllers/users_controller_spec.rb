@@ -7,7 +7,7 @@ describe UsersController do
   end
 
   describe "GET 'edit'" do
-    fixtures :users
+    fixtures :users, :git_configs
     before(:each) do
       @controller.stub!(:current_user) { User.find 1 }
     end

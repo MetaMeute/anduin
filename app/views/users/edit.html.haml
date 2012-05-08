@@ -10,7 +10,7 @@
       #password_fields
         = render :partial => 'password_fields', :locals => { :f => f }
       #git_config_fields
-        = fields_for :git_config do |git_config|
+        = fields_for @user.git_config do |git_config|
           =render :partial => '/git_configs/fields', :locals => { :f => git_config }
       #buttons
         = f.submit
