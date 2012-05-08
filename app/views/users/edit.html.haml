@@ -1,3 +1,9 @@
+= content_for :sidebar_left do
+  = menu_head t(:profile, :scope => :user_form)
+  %ul#nav_profile.menu.nav.nav-pills.nav-stacked
+    = menu_item t(:password, :scope => :user_form), '#password_fields'
+    = menu_item t(:git_config, :scope => :user_form), '#git_config_fields'
+
 #page_content
   - unless @user.nil?
     = form_for @user do |f|
