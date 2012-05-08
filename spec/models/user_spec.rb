@@ -22,4 +22,21 @@ describe User do
       user.nick.should eq('gandalf')
     end
   end
+
+  describe "git config" do
+    let(:user) { User.find_by_nick('test') }
+    before(:each) do
+      u = User.create!(:nick => 'test')
+    end
+
+    it "should create a git config on creation" do
+      user.git_config.should_not be_nil
+    end
+
+    it "should update the git config" do
+      user.update_attributes({ :git_config_attributes => { :name => "testname" } })
+      user.git_config.name.should == "testname"
+    end
+
+  end
 end

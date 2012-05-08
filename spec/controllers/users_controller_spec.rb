@@ -34,6 +34,15 @@ describe UsersController do
       assigns(:user).should == user
     end
 
+    it "should update the git config of the user" do
+      user = User.find 1
+      @controller.stub!(:current_user) { user }
+      put 'update', { :id => user.id, :user => { :git_config_attributes => { :name => "Test User" } } }
+      gc = assigns(:user).git_config
+      gc.name.should == "Test User"
+      gc.should_not be_changed
+    end
+
     it "should update the email attribute of user" do
       user = User.find 1
       test_email = 'test@example.com'
