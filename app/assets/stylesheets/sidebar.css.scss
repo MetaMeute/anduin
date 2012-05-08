@@ -29,9 +29,14 @@ div#sidebar-left, div#sidebar-right {
       padding: .25ex .5em;  
       text-decoration : none;
     }
-    li a:hover {
+    li.active > a {
       border-radius: 1ex;
       background: rgba($secondary_b, 0.62);
+      text-decoration : none;
+    }
+    li a:hover {
+      border-radius: 1ex;
+      background: rgba($secondary_b, 0.33);
       text-decoration : none;
     }
   }
