@@ -1,7 +1,7 @@
 %h1#nav_git_config.section=t :git_config, :scope => :user_form
 #git_config_name.text_input
   = f.label :name
-  = f.text_field :name
+  = f.text_field :name, :rel => :popover, 'data-content' => t(:name, :scope => [:hint, :git_config]), 'data-title' => t(:name_title, :scope => [:hint, :git_config])
 #git_config_email.text_input
   = f.label :email
-  = f.email_field :email
+  = f.email_field :email, :rel => :popover, 'data-content' => t(:email, :scope => [:hint, :git_config]), 'data-title' => t(:email_title, :scope => [:hint, :git_config])
