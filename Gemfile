@@ -11,7 +11,7 @@ gem 'haml'
 gem 'coffee-script'
 gem 'therubyracer'
 gem 'uglifier'
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', "< 2.0.7"
 
 gem 'jquery-rails'
 gem 'simple-navigation'
