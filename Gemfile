@@ -1,12 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.1'
+gem 'rails', '~> 3.2'
 
 gem 'sqlite3'
 
 # Asset template engines
 gem 'json'
-gem 'sass-rails', "~> 3.1.0"
+gem 'sass-rails', "~> 3.2"
 gem 'haml'
 gem 'coffee-script'
 gem 'therubyracer'
