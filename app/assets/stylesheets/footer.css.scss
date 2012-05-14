@@ -1,7 +1,6 @@
 @import "colours";
 
-div#footer
-{
+#footer {
   width:100%;
   background: rgba($secondary_b, 0.42);
   height:auto;
@@ -13,29 +12,33 @@ div#footer
   position:fixed; bottom:0;
   border:0px;
   border-bottom: 2px solid black;
-}
-#footer ul /* Primary and secondary links */ {
-  margin: 0;
-  padding: 0;
-  text-align: left; /* LTR */
-  position:relative;
-  bottom:0px;
-}
-#footer ul li /* A simple method to get navigation links to appear in one line. */ {
-  float: left; /* LTR */
-  padding: .75ex 2em; /* LTR */
-  padding-bottom:1ex;
-  margin:0;
-  list-style-image: none;
-  list-style-type: none;
-  font-size:.8em;
-  position:relative;
-  border-top:0;
-}
-#footer ul li.right {
-float:right;
-}
-#footer ul li a {
+
+  ul /* Primary and secondary links */ {
+    margin: 0;
+    padding: 0;
+    text-align: left; /* LTR */
+    position:relative;
+    bottom:0px;
+
+    li /* A simple method to get navigation links to appear in one line. */ {
+      float: left; /* LTR */
+      padding: .75ex 2em; /* LTR */
+      padding-bottom:1ex;
+      margin:0;
+      list-style-image: none;
+      list-style-type: none;
+      font-size:.8em;
+      position:relative;
+      border-top:0;
+      
+      a {
         text-decoration:none;
         white-space: nowrap;
+      }
+    }
+    li.right {
+      float:right;
+    }
+  }
 }
+
