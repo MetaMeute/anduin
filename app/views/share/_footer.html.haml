@@ -1,9 +1,8 @@
 #footer
-  %ul
-    %li
-      Powered by 
-      =link_to "Anduin","https://github.com/MetaMeute/anduin"
-      &ndash; a frontend for the Git-based
-      =link_to "Gollum","https://github.com/github/gollum"
-      ="-Wiki."
-    %li{:class => "right"}= link_to t("Impressum"), meutewiki_show_page_path("Impressum")
+  %div
+    Powered by 
+    =link_to "Anduin","https://github.com/MetaMeute/anduin"
+    &ndash; a frontend for the Git-based
+    =link_to "Gollum","https://github.com/github/gollum"
+    ="-Wiki."
+  .right= link_to t("Impressum"), meutewiki_show_page_path("Impressum")
