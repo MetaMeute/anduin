@@ -1,14 +1,17 @@
 @import "colours";
 
+html {
+  height: 100%;
+}
 body {
   font-family: DroidSans-webfont, sans-serif;
   font-size: 100%;
   color: $secondary_a;
   text-align: center;
   margin:0;
-  padding:0;
-  padding-top:2em;
+  padding: 0;
   width:100%;
+  height: 100%;
   background:rgba(79,108,133,0.1);
 }
 a:hover, a:active, a
@@ -39,10 +42,13 @@ h1,h2,h3,h4,h5 {
   font-weight: bold;
 }
 div#content-outer {
+  margin-top: 2em;
   padding-top:.5em;
+  height: 100%;
 }
 div#page {
   min-width:900px;
+  min-height: 100%;
 }
 div#page_content {
   font-size: 80.0%;
