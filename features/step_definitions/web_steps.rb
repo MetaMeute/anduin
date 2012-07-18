@@ -46,6 +46,11 @@ Then /^I should not see "([^"]*)"$/ do |text|
   page.should_not have_content(text)
 end
 
+When /^I visit my account settings page$/ do
+  @user = User.find_by_nick("Robert")
+  visit edit_user_path(@user)
+end
+
 When /^I go the home page$/ do
   visit '/'
 end

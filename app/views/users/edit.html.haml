@@ -12,5 +12,7 @@
       #git_config_fields
         = f.fields_for :git_config do |git_config|
           =render :partial => '/git_configs/fields', :locals => { :f => git_config }
+      #posix_settings_fields
+        =render :partial => 'posix_fields', :locals => { :f => f }
       #buttons
         = f.submit
