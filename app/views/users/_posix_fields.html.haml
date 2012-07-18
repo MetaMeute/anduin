@@ -1,5 +1,5 @@
 %h1#nav_posix_settings.section=t :posix_settings, :scope => :user_form
-#shell
-  = f.fields_for :posix_settings do |p|
+= f.fields_for :posix_settings do |p|
+  #shell.text_input
     = p.label :login_shell
     = p.select :login_shell, {"/bin/bash" => :bash}
