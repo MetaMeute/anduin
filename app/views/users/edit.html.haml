@@ -3,6 +3,7 @@
   %ul#nav_profile.menu.nav.nav-pills.nav-stacked
     = menu_item t(:password, :scope => :user_form), '#password_fields'
     = menu_item t(:git_config, :scope => :user_form), '#git_config_fields'
+    = menu_item t(:posix_settings, :scope => :user_form), '#posix_settings_fields'
 
 #page_content
   - unless @user.nil?
