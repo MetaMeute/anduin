@@ -29,7 +29,6 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'rspec-rails'
   gem 'guard-cucumber'
-  gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'guard-spork'
   gem 'spork'
@@ -37,4 +36,5 @@ end
 
 group :test do
   gem 'email_spec'
+  gem 'cucumber-rails'
 end
