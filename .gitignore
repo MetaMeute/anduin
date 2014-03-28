@@ -6,3 +6,4 @@ tmp/
 *~
 db/*.git
 rerun.txt
+vendor/bundle
